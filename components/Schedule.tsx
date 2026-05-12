@@ -106,9 +106,10 @@ export default function Schedule() {
         }),
       });
 
+      const data = await res.json().catch(() => ({}));
+
       if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Something went wrong.");
+        throw new Error(data.error || "Something went wrong. Please try again.");
       }
 
       setStatus("success");
