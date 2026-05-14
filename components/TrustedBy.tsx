@@ -99,30 +99,56 @@ const logos: LogoEntry[] = [
     ),
   },
 
-  // ── MGC: dark crimson letters, "QUALITY · PERFORMANCE · VALUE"
+  // ── MGC ─────────────────────────────────────────────────────
   {
     key: "mgc",
+    type: "img",
+    src: "/logos/mgc.png",
+    alt: "MGC — Quality · Performance · Value",
+    width: 200,
+    height: 100,
+  },
+
+  // ── TopMar Construction ─────────────────────────────────────
+  {
+    key: "topmar",
     type: "css",
     render: () => (
-      <div style={{ textAlign: "center" }}>
-        <div style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 44,
-          fontWeight: 900,
-          color: "#8b0016",
-          letterSpacing: "-1px",
-          lineHeight: 1,
-          textShadow: "1px 1px 0 rgba(0,0,0,0.15)",
-        }}>MGC</div>
-        <div style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 8,
-          fontWeight: 600,
-          letterSpacing: "0.18em",
-          color: "#555",
-          marginTop: 5,
-          textTransform: "uppercase",
-        }}>Quality · Performance · Value</div>
+      <div style={{
+        background: "#0d1b2a",
+        borderRadius: 4,
+        padding: "14px 20px",
+        display: "flex",
+        alignItems: "center",
+        gap: 14,
+        width: "100%",
+        justifyContent: "center",
+      }}>
+        {/* M icon mark */}
+        <svg width="38" height="38" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="48" height="48" fill="#0d1b2a"/>
+          <rect x="6" y="6" width="36" height="36" fill="white"/>
+          <path d="M10 38V10L24 28L38 10V38" fill="#0d1b2a"/>
+        </svg>
+        <div>
+          <div style={{
+            fontFamily: "var(--font-display)",
+            fontWeight: 700,
+            fontSize: 20,
+            color: "#fff",
+            letterSpacing: "0.06em",
+            lineHeight: 1.1,
+          }}>TopMar</div>
+          <div style={{
+            fontFamily: "var(--font-sans)",
+            fontWeight: 400,
+            fontSize: 9,
+            color: "rgba(255,255,255,0.65)",
+            letterSpacing: "0.22em",
+            textTransform: "uppercase",
+            marginTop: 3,
+          }}>Construction</div>
+        </div>
       </div>
     ),
   },
