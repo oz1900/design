@@ -33,8 +33,8 @@ const logos: LogoEntry[] = [
     type: "img",
     src: "/logos/heb.png",
     alt: "H-E-B",
-    width: 140,
-    height: 56,
+    width: 100,
+    height: 40,
   },
   {
     key: "mgc",
@@ -76,26 +76,6 @@ const logos: LogoEntry[] = [
           display: "block",
           textTransform: "uppercase",
         }}>waterworks</span>
-      </div>
-    ),
-  },
-  {
-    key: "tesla",
-    type: "css",
-    render: () => (
-      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        {/* Tesla T mark */}
-        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M14 4.5C14 4.5 6 3 0 0C0 0 1.5 6 7 7.5L14 36L21 7.5C26.5 6 28 0 28 0C22 3 14 4.5 14 4.5Z" fill="#CC0000"/>
-        </svg>
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 26,
-          fontWeight: 700,
-          color: "#CC0000",
-          letterSpacing: "0.18em",
-          lineHeight: 1,
-        }}>TESLA</span>
       </div>
     ),
   },
@@ -253,7 +233,7 @@ export default function TrustedBy() {
           <div className="logo-grid" ref={gridRef}>
             {logos.map((logo) => {
               const filled = logo.type === "img" && (
-                logo.key === "heb" || logo.key === "mgc" || logo.key === "mwh"
+                logo.key === "mgc" || logo.key === "mwh"
               );
               return (
                 <div
