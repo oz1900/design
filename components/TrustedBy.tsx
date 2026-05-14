@@ -47,10 +47,10 @@ const logos: LogoEntry[] = [
   {
     key: "mwh",
     type: "img",
-    src: "/logos/mwh.png",
+    src: "/logos/mwh-square.png",
     alt: "MWH Constructors",
-    width: 90,
-    height: 90,
+    width: 72,
+    height: 72,
   },
   {
     key: "plw",
