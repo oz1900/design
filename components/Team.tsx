@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,6 +12,7 @@ const team = [
     name: "Vitaliy M. Greenberg",
     creds: "SHEP · CHSO · SSH",
     title: "Founder & Principal Safety Consultant",
+    photo: "/vitaliy.webp",
     bio: "Nationally recognized safety professional with over a decade of experience in high-risk construction and industrial environments. Authorized OSHA Outreach Trainer with credentials in Safety, Health, and Environmental Professional (SHEP). Notable achievements include 1.3 million man-hours without an OSHA recordable incident on a BP refinery project, and successful implementation of ISO 45001 and ISO 14001 safety management systems.",
     highlights: [
       "1.3M man-hours without OSHA recordable — BP refinery project",
@@ -23,6 +25,7 @@ const team = [
     name: "Gary L. Douthitt",
     creds: "CSP",
     title: "Senior HSE Consultant",
+    photo: "/gary.webp",
     bio: "More than three decades of safety leadership across public, private, and federal sectors. Certified Safety Professional and OSHA Construction Outreach Trainer. Former U.S. Air Force Wing Chief of Safety. Led HSE oversight for over 300 Department of Energy laboratory construction projects, achieving a Total Recordable Incident Rate (TRIR) of less than 0.08.",
     highlights: [
       "TRIR < 0.08 on active programs",
@@ -76,6 +79,15 @@ export default function Team() {
           background: #fff;
           border: 1px solid var(--hairline);
           padding: 40px;
+        }
+        .team-photo {
+          width: 88px;
+          height: 88px;
+          border-radius: 50%;
+          object-fit: cover;
+          object-position: center top;
+          margin-bottom: 20px;
+          display: block;
         }
         .team-name {
           font-family: var(--font-display);
@@ -157,6 +169,14 @@ export default function Team() {
           <div className="team-grid" ref={cardsRef}>
             {team.map((member) => (
               <div key={member.name} className="team-card">
+                <Image
+                  src={member.photo}
+                  alt={member.name}
+                  width={88}
+                  height={88}
+                  className="team-photo"
+                  unoptimized
+                />
                 <div className="team-name">{member.name}</div>
                 <div className="team-creds">{member.creds}</div>
                 <div className="team-title">{member.title}</div>

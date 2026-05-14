@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 
 export default function Nav() {
@@ -87,7 +88,7 @@ export default function Nav() {
       `}</style>
       <nav className="gs-nav" ref={navRef} id="nav">
         <div className="container gs-nav-inner">
-          <a href="#home" aria-label="Greenberg Safety home">
+          <Link href="/" aria-label="Greenberg Safety home">
             <Image
               src="/greenberg-logo.png"
               alt="Greenberg Safety"
@@ -96,22 +97,22 @@ export default function Nav() {
               style={{ height: 30, width: "auto" }}
               priority
             />
-          </a>
+          </Link>
           <div className="gs-nav-links">
-            <a href="#services">Services</a>
-            <a href="#about">Team</a>
-            <a href="/blog">Blog</a>
-            <a href="#trusted">Partners</a>
+            <Link href="/#services">Services</Link>
+            <Link href="/#about">Team</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/#trusted">Partners</Link>
           </div>
-          <a href="#schedule" className="btn btn-primary btn-sm nav-cta-desktop">
+          <Link href="/#schedule" className="btn btn-primary btn-sm nav-cta-desktop">
             Schedule a consultation
-          </a>
-          <a href="#schedule" className="btn btn-primary btn-sm nav-cta-mobile" aria-label="Schedule">
+          </Link>
+          <Link href="/#schedule" className="btn btn-primary btn-sm nav-cta-mobile" aria-label="Schedule">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <rect x="3" y="4" width="18" height="18" rx="2"/>
               <path d="M16 2v4M8 2v4M3 10h18"/>
             </svg>
-          </a>
+          </Link>
         </div>
       </nav>
     </>
