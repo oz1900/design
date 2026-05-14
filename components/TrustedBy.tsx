@@ -8,7 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 /* ── Logo definitions ─────────────────────────────────────── */
-// type: "img"  → real file in /public/logos/
+// type: "img"  → real file in /
 // type: "css"  → CSS/SVG recreation
 type LogoEntry =
   | { key: string; type: "img"; src: string; alt: string; width: number; height: number; style?: React.CSSProperties }
@@ -62,17 +62,11 @@ const logos: LogoEntry[] = [
   // ── H-E-B ───────────────────────────────────────────────────
   {
     key: "heb",
-    type: "css",
-    render: () => (
-      <div style={{
-        fontFamily: "var(--font-display)",
-        fontSize: 36,
-        fontWeight: 800,
-        color: "#c8102e",
-        letterSpacing: "-1px",
-        lineHeight: 1,
-      }}>H‑E‑B</div>
-    ),
+    type: "img",
+    src: "/logos/heb.png",
+    alt: "H-E-B",
+    width: 180,
+    height: 72,
   },
 
   // ── Goodwyn Flooring Companies: navy bg, house icon, text ───
@@ -92,10 +86,10 @@ const logos: LogoEntry[] = [
       }}>
         {/* House + flooring icon */}
         <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M6 20L24 5L42 20V42H30V30H18V42H6V20Z" stroke="white" strokeWidth="2.5" fill="none"/>
-          <rect x="14" y="32" width="20" height="2.5" fill="white"/>
-          <rect x="14" y="36" width="20" height="2.5" fill="white"/>
-          <rect x="20" y="12" width="8" height="8" stroke="white" strokeWidth="2" fill="none"/>
+          <path d="M6 20L24 5L42 20V42H30V30H18V42H6V20Z" stroke="white" strokeWidth="2.5" fill="none" />
+          <rect x="14" y="32" width="20" height="2.5" fill="white" />
+          <rect x="14" y="36" width="20" height="2.5" fill="white" />
+          <rect x="20" y="12" width="8" height="8" stroke="white" strokeWidth="2" fill="none" />
         </svg>
         <div>
           <div style={{ fontFamily: "var(--font-sans)", fontWeight: 700, fontSize: 15, color: "#fff", letterSpacing: "0.08em", lineHeight: 1.2 }}>GOODWYN</div>
