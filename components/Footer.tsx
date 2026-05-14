@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -63,32 +64,34 @@ export default function Footer() {
         <div className="container">
           <div className="foot-grid">
             <div className="foot-brand">
-              <Image
-                src="/greenberg-logo.png"
-                alt="Greenberg Safety"
-                width={140}
-                height={28}
-                style={{ height: 28, width: "auto", filter: "invert(1)", marginBottom: 16 }}
-                unoptimized
-              />
+              <Link href="/" aria-label="Greenberg Safety home" style={{ display: 'inline-block' }}>
+                <Image
+                  src="/greenberg-logo-white.webp"
+                  alt="Greenberg Safety"
+                  width={160}
+                  height={36}
+                  style={{ height: 36, width: "auto", marginBottom: 16 }}
+                  unoptimized
+                />
+              </Link>
               <p className="foot-lede">
                 Practical safety consulting, compliance support, training, and project safety services. Austin, Texas — serving construction and industrial teams nationwide.
               </p>
             </div>
             <div className="foot-col">
               <div className="foot-col-t">Services</div>
-              <a href="#services">Safety consulting</a>
-              <a href="#services">Site inspections</a>
-              <a href="#services">OSHA training</a>
-              <a href="#services">Project staffing</a>
-              <a href="#services">Compliance support</a>
+              <Link href="/#services">Safety consulting</Link>
+              <Link href="/#services">Site inspections</Link>
+              <Link href="/#services">OSHA training</Link>
+              <Link href="/#services">Project staffing</Link>
+              <Link href="/#services">Compliance support</Link>
             </div>
             <div className="foot-col">
               <div className="foot-col-t">Company</div>
-              <a href="#about">Team</a>
-              <a href="/blog">Blog</a>
-              <a href="#trusted">Partners</a>
-              <a href="#schedule">Schedule a call</a>
+              <Link href="/#about">Team</Link>
+              <Link href="/blog">Blog</Link>
+              <Link href="/#trusted">Partners</Link>
+              <Link href="/#schedule">Schedule a call</Link>
             </div>
             <div className="foot-col">
               <div className="foot-col-t">Contact</div>

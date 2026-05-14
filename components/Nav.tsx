@@ -92,9 +92,9 @@ export default function Nav() {
             <Image
               src="/greenberg-logo.png"
               alt="Greenberg Safety"
-              width={140}
-              height={30}
-              style={{ height: 30, width: "auto" }}
+              width={160}
+              height={36}
+              style={{ height: 36, width: "auto" }}
               priority
             />
           </Link>
