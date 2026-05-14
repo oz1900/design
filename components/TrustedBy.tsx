@@ -80,29 +80,22 @@ const logos: LogoEntry[] = [
     ),
   },
   {
-    key: "topmar",
+    key: "tesla",
     type: "css",
     render: () => (
-      <div style={{ textAlign: "center", lineHeight: 1 }}>
+      <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+        {/* Tesla T mark */}
+        <svg width="28" height="36" viewBox="0 0 28 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M14 4.5C14 4.5 6 3 0 0C0 0 1.5 6 7 7.5L14 36L21 7.5C26.5 6 28 0 28 0C22 3 14 4.5 14 4.5Z" fill="#CC0000"/>
+        </svg>
         <span style={{
           fontFamily: "var(--font-display)",
           fontSize: 26,
-          fontWeight: 800,
-          color: "#0d1b2a",
-          letterSpacing: "0.04em",
-          lineHeight: 1,
-          display: "block",
-        }}>TOPMAR</span>
-        <span style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 10,
-          fontWeight: 500,
-          color: "#999",
+          fontWeight: 700,
+          color: "#CC0000",
           letterSpacing: "0.18em",
-          marginTop: 6,
-          display: "block",
-          textTransform: "uppercase",
-        }}>Construction</span>
+          lineHeight: 1,
+        }}>TESLA</span>
       </div>
     ),
   },
@@ -233,11 +226,12 @@ export default function TrustedBy() {
         /* images with colored backgrounds fill the card */
         .logo-card.logo-card--filled {
           padding: 0;
+          overflow: hidden;
         }
         .logo-card--filled img {
           width: 100%;
           height: 100%;
-          object-fit: cover;
+          object-fit: contain;
         }
 
         @media (max-width: 860px)  { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
