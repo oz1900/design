@@ -98,11 +98,10 @@ export default function Nav() {
             />
           </a>
           <div className="gs-nav-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
             <a href="#services">Services</a>
+            <a href="#about">Team</a>
+            <a href="/blog">Blog</a>
             <a href="#trusted">Partners</a>
-            <a href="#schedule">Schedule</a>
           </div>
           <a href="#schedule" className="btn btn-primary btn-sm nav-cta-desktop">
             Schedule a consultation

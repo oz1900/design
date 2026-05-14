@@ -85,7 +85,8 @@ export default function Footer() {
             </div>
             <div className="foot-col">
               <div className="foot-col-t">Company</div>
-              <a href="#about">About</a>
+              <a href="#about">Team</a>
+              <a href="/blog">Blog</a>
               <a href="#trusted">Partners</a>
               <a href="#schedule">Schedule a call</a>
             </div>

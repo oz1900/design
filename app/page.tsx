@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
 import TrustedBy from "@/components/TrustedBy";
 import WhyGreenberg from "@/components/WhyGreenberg";
+import Team from "@/components/Team";
 import Schedule from "@/components/Schedule";
 import FinalCTA from "@/components/FinalCTA";
 import Footer from "@/components/Footer";
@@ -18,6 +19,7 @@ export default function Home() {
         <Services />
         <TrustedBy />
         <WhyGreenberg />
+        <Team />
         <Schedule />
         <FinalCTA />
       </main>

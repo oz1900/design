@@ -15,8 +15,8 @@ const services = [
         <path d="m9 12 2 2 4-4"/>
       </svg>
     ),
-    title: "Safety consulting",
-    body: "Practical safety solutions for active jobsites and growing teams.",
+    title: "Safety & health program development",
+    body: "Identify hazards, eliminate risks, and build programs that hold up in the field — not just on paper.",
   },
   {
     num: "02",
@@ -26,8 +26,8 @@ const services = [
         <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
       </svg>
     ),
-    title: "Site safety inspections",
-    body: "Identify risks, document findings, and keep work moving safely.",
+    title: "Workers' comp control strategies",
+    body: "Hazard identification programs designed to reduce workplace incidents and lower your insurance exposure.",
   },
   {
     num: "03",
@@ -38,7 +38,7 @@ const services = [
       </svg>
     ),
     title: "OSHA & risk management training",
-    body: "Training that builds safer teams and stronger compliance.",
+    body: "OSHA 10-hour and 30-hour courses, site-specific orientations, and supervisor development — training that sticks.",
   },
   {
     num: "04",
@@ -50,7 +50,7 @@ const services = [
       </svg>
     ),
     title: "Project safety staffing",
-    body: "Reliable safety professionals when your project needs support.",
+    body: "Rapid deployment of embedded EHS professionals across North America, Canada, and internationally.",
   },
   {
     num: "05",
@@ -60,8 +60,8 @@ const services = [
         <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
       </svg>
     ),
-    title: "Compliance support",
-    body: "Clear guidance for OSHA, site requirements, and project expectations.",
+    title: "Fleet & DOT compliance",
+    body: "Digital fleet safety programs that reduce insurance premiums and keep your drivers and equipment in compliance.",
   },
   {
     num: "06",
@@ -71,8 +71,8 @@ const services = [
         <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
       </svg>
     ),
-    title: "Subcontractor safety support",
-    body: "Field-focused oversight to improve contractor performance.",
+    title: "Subcontractor management",
+    body: "Contractual safety compliance across your entire contractor network — state, federal, and client requirements.",
   },
   {
     num: "07",
@@ -82,7 +82,7 @@ const services = [
       </svg>
     ),
     title: "Hands-on project safety management",
-    body: "On-site leadership for complex construction and industrial work.",
+    body: "On-site EHS leadership for complex construction and industrial projects — from pre-construction through closeout.",
   },
   {
     num: "08",
@@ -93,8 +93,8 @@ const services = [
         <line x1="12" y1="17" x2="12.01" y2="17"/>
       </svg>
     ),
-    title: "Accident prevention & crisis support",
-    body: "Practical support before, during, and after critical events.",
+    title: "Accident investigation & crisis response",
+    body: "Root-cause investigations, corrective action documentation, and crisis management across multiple industries.",
   },
 ];
 
