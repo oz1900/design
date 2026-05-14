@@ -49,8 +49,8 @@ const logos: LogoEntry[] = [
     type: "img",
     src: "/logos/mwh.png",
     alt: "MWH Constructors",
-    width: 140,
-    height: 56,
+    width: 90,
+    height: 90,
   },
   {
     key: "plw",
@@ -232,9 +232,7 @@ export default function TrustedBy() {
 
           <div className="logo-grid" ref={gridRef}>
             {logos.map((logo) => {
-              const filled = logo.type === "img" && (
-                logo.key === "mgc" || logo.key === "mwh"
-              );
+              const filled = logo.type === "img" && logo.key === "mgc";
               return (
                 <div
                   key={logo.key}
