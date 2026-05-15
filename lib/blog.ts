@@ -47,7 +47,7 @@ If your fall protection plan is collecting dust or your workers aren't sure wher
   },
   {
     slug: "beating-the-heat-in-construction-worker-safety-tips",
-    title: "Beating the Heat in Construction: Small Things That Make a Big Difference",
+    title: "Beating the Heat in Construction: Worker Safety Tips",
     date: "May 12, 2025",
     excerpt:
       "Preventing heat illness doesn't always require expensive solutions. Here are 9 low-cost strategies that actually work on active jobsites.",
@@ -99,7 +99,7 @@ The new federal heat standard makes written heat illness prevention plans, envir
   },
   {
     slug: "when-to-hire-a-construction-safety-consultant-in-austin",
-    title: "When Should You Hire a Construction Safety Consultant in Austin TX?",
+    title: "When to Hire a Construction Safety Consultant in Austin",
     date: "May 12, 2025",
     excerpt:
       "Six scenarios where bringing in a safety consultant protects your schedule, budget, reputation, and insurance position.",
@@ -141,7 +141,7 @@ Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
   },
   {
     slug: "building-a-strong-safety-culture-for-osha-compliance",
-    title: "Building a Strong Safety Culture: The Key to OSHA Compliance in 2025",
+    title: "Building a Safety Culture for OSHA Compliance",
     date: "May 7, 2025",
     excerpt:
       "OSHA compliance is the floor, not the ceiling. The companies with the best safety records treat safety as a culture — not a checklist.",

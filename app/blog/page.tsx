@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import { posts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Safety Blog | Construction & OSHA Compliance Resources",
+  title: "Safety Blog | OSHA & Construction Safety Resources",
   description:
     "Practical safety insights for construction and industrial teams — OSHA compliance, fall prevention, heat illness, safety culture, and more from Greenberg Safety.",
   alternates: { canonical: "https://www.greenbergsafety.com/blog" },
