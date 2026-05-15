@@ -13,17 +13,22 @@ const MONTH_NAMES = [
 const DOW = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
 const SLOTS = ["8:00 AM","9:30 AM","11:00 AM","1:00 PM","2:30 PM","4:00 PM"];
 
-// Deterministic block — same dates blocked every visit, looks like real bookings
-function isBooked(year: number, month: number, day: number): boolean {
+// Deterministic hashes — consistent on every visit, looks like real bookings
+function isDayFullyBooked(year: number, month: number, day: number): boolean {
   const hash = (year * 373 + month * 97 + day * 31) % 10;
-  return hash < 3; // ~30% of weekdays appear booked
+  return hash < 2; // ~20% of weekdays fully blocked
+}
+
+function isSlotBooked(year: number, month: number, day: number, slotIndex: number): boolean {
+  const hash = (year * 491 + month * 113 + day * 59 + slotIndex * 17) % 10;
+  return hash < 3; // ~30% of slots within an available day appear taken
 }
 
 function getNextAvailableDay(fromDate: Date): number {
   const d = new Date(fromDate);
   for (let i = 0; i < 14; i++) {
     const dow = d.getDay();
-    if (dow !== 0 && dow !== 6 && !isBooked(d.getFullYear(), d.getMonth(), d.getDate())) {
+    if (dow !== 0 && dow !== 6 && !isDayFullyBooked(d.getFullYear(), d.getMonth(), d.getDate())) {
       return d.getDate();
     }
     d.setDate(d.getDate() + 1);
@@ -103,7 +108,7 @@ export default function Schedule() {
     if (isCurrentMonth && d < todayDate) return false;
     const dow = new Date(year, month, d).getDay();
     if (dow === 0 || dow === 6) return false;
-    return !isBooked(year, month, d);
+    return !isDayFullyBooked(year, month, d);
   };
 
   const dayClass = (d: number) => {
@@ -258,6 +263,7 @@ export default function Schedule() {
         }
         .slot-btn:hover { border-color: var(--brand-blue); color: var(--brand-blue); }
         .slot-btn.slot-selected { background: var(--brand-blue); color: #fff; border-color: var(--brand-blue); }
+        .slot-btn.slot-booked { background: #f9fafb; color: #d1d5db; border-color: #f3f4f6; cursor: not-allowed; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
         .sched-confirm {
           margin-top: auto; padding-top: 24px;
           display: flex; flex-direction: column; gap: 12px;
@@ -415,7 +421,12 @@ export default function Schedule() {
                             type="button"
                             className={dayClass(d)}
                             disabled={!isClickable}
-                            onClick={() => isClickable && setSelected(d)}
+                            onClick={() => {
+                              if (!isClickable) return;
+                              setSelected(d);
+                              const firstOpen = SLOTS.findIndex((_, i) => !isSlotBooked(year, month, d, i));
+                              setSelectedSlot(SLOTS[firstOpen >= 0 ? firstOpen : 0]);
+                            }}
                           >
                             {d}
                           </button>
@@ -426,16 +437,20 @@ export default function Schedule() {
                     <div className="slots">
                       <div className="slots-label">{slotsLabel}</div>
                       <div className="slot-grid">
-                        {SLOTS.map((s) => (
-                          <button
-                            key={s}
-                            type="button"
-                            className={`slot-btn${selectedSlot === s ? " slot-selected" : ""}`}
-                            onClick={() => setSelectedSlot(s)}
-                          >
-                            {s}
-                          </button>
-                        ))}
+                        {SLOTS.map((s, i) => {
+                          const booked = selected ? isSlotBooked(year, month, selected, i) : false;
+                          return (
+                            <button
+                              key={s}
+                              type="button"
+                              className={`slot-btn${selectedSlot === s && !booked ? " slot-selected" : ""}${booked ? " slot-booked" : ""}`}
+                              disabled={booked}
+                              onClick={() => !booked && setSelectedSlot(s)}
+                            >
+                              {booked ? "Booked" : s}
+                            </button>
+                          );
+                        })}
                       </div>
                     </div>
 
