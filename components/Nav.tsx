@@ -95,6 +95,7 @@ export default function Nav() {
               width={160}
               height={36}
               style={{ height: 36, width: "auto" }}
+              sizes="160px"
               priority
             />
           </Link>

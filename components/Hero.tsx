@@ -55,20 +55,19 @@ export default function Hero() {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
-      tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.6 }, 0.5)
-        .from(h1Ref.current, { opacity: 0, y: 32, duration: 0.7 }, 0.65)
-        .from(subRef.current, { opacity: 0, y: 24, duration: 0.6 }, 0.8)
-        .from(ctasRef.current, { opacity: 0, y: 20, duration: 0.5 }, 0.95)
-        .from(statsRef.current, { opacity: 0, y: 16, duration: 0.5 }, 1.05);
+      tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
+        .from(h1Ref.current, { opacity: 0, y: 24, duration: 0.55 }, 0.2)
+        .from(subRef.current, { opacity: 0, y: 18, duration: 0.5 }, 0.32)
+        .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.42)
+        .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.5);
 
       // Image panel
       gsap.from(mediaRef.current, {
         opacity: 0,
-        x: 48,
-        scale: 1.04,
-        duration: 1.0,
+        x: 32,
+        duration: 0.8,
         ease: "power3.out",
-        delay: 0.6,
+        delay: 0.15,
       });
       // Floating tag
       gsap.from(tagRef.current, {
@@ -228,13 +227,13 @@ export default function Hero() {
               <div className="hero-deco-top" />
               <div className="hero-deco-bottom" />
               <Image
-                src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+                src="/hero.jpg"
                 alt="Active construction site with steel framework and workers in PPE"
                 width={600}
                 height={750}
                 style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, filter: "saturate(0.92) contrast(1.02)" }}
                 priority
-                unoptimized
+                sizes="(max-width: 1000px) 100vw, 50vw"
               />
               <div className="hero-tag" ref={tagRef}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
