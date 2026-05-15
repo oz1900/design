@@ -9,7 +9,7 @@ export interface BlogPost {
 export const posts: BlogPost[] = [
   {
     slug: "construction-fall-prevention-stop-falls-before-they-happen",
-    title: "Construction Fall Prevention: Stop Falls Before They Happen",
+    title: "Fall Prevention on Construction Sites",
     date: "May 13, 2025",
     excerpt:
       "Falls are the leading cause of death in construction. Most fall hazards are visible before an incident happens — here's how to stop them.",
@@ -47,7 +47,7 @@ If your fall protection plan is collecting dust or your workers aren't sure wher
   },
   {
     slug: "beating-the-heat-in-construction-worker-safety-tips",
-    title: "Beating the Heat in Construction: Worker Safety Tips",
+    title: "Heat Safety Tips for Construction Workers",
     date: "May 12, 2025",
     excerpt:
       "Preventing heat illness doesn't always require expensive solutions. Here are 9 low-cost strategies that actually work on active jobsites.",
@@ -99,7 +99,7 @@ The new federal heat standard makes written heat illness prevention plans, envir
   },
   {
     slug: "when-to-hire-a-construction-safety-consultant-in-austin",
-    title: "When to Hire a Construction Safety Consultant in Austin",
+    title: "When to Hire a Construction Safety Consultant",
     date: "May 12, 2025",
     excerpt:
       "Six scenarios where bringing in a safety consultant protects your schedule, budget, reputation, and insurance position.",
@@ -177,7 +177,7 @@ We work across construction, infrastructure, and industrial sectors — building
   },
   {
     slug: "2026-osha-heat-stress-standard-construction-safety-guide",
-    title: "Navigating the 2026 OSHA Heat Stress Standard: A Complete Guide",
+    title: "2026 OSHA Heat Stress Standard Guide",
     date: "May 6, 2025",
     excerpt:
       "The new federal heat stress standard shifts heat illness prevention from recommended best practices to enforceable employer obligations. Here's what you need to know.",
