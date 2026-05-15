@@ -95,7 +95,7 @@ export default function Nav() {
           </Link>
           <div className="gs-nav-links">
             <Link href="/#services">Services</Link>
-            <Link href="/#about">Team</Link>
+            <Link href="/#team">Team</Link>
             <Link href="/blog">Blog</Link>
             <Link href="/#trusted">Partners</Link>
           </div>

@@ -136,7 +136,7 @@ export default function WhyGreenberg() {
           .why-grid { grid-template-columns: 1fr; }
         }
       `}</style>
-      <section className="why" id="about" ref={sectionRef}>
+      <section className="why" id="why" ref={sectionRef}>
         <div className="container why-inner">
           <div className="why-head" ref={headRef}>
             <div>

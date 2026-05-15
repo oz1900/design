@@ -11,9 +11,15 @@ const MONTH_NAMES = [
   "July","August","September","October","November","December",
 ];
 const DOW = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
-const AVAILABLE = new Set([5,6,7,8,11,12,13,14,18,19,20,21,26,27,28]);
-const TODAY = 11;
 const SLOTS = ["8:00 AM","9:30 AM","11:00 AM","1:00 PM","2:30 PM","4:00 PM"];
+
+function getNextAvailableDay(fromDate: Date): number {
+  const d = new Date(fromDate);
+  const dow = d.getDay();
+  if (dow === 0) return d.getDate() + 1;
+  if (dow === 6) return d.getDate() + 2;
+  return d.getDate();
+}
 
 type Status = "idle" | "loading" | "success" | "error";
 
@@ -21,9 +27,14 @@ export default function Schedule() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const [month, setMonth] = useState(4);
-  const [year, setYear] = useState(2026);
-  const [selected, setSelected] = useState(14);
+  const now = new Date();
+  const todayYear = now.getFullYear();
+  const todayMonth = now.getMonth();
+  const todayDate = now.getDate();
+
+  const [month, setMonth] = useState(todayMonth);
+  const [year, setYear] = useState(todayYear);
+  const [selected, setSelected] = useState(() => getNextAvailableDay(now));
   const [selectedSlot, setSelectedSlot] = useState("11:00 AM");
 
   const [name, setName] = useState("");
@@ -60,18 +71,23 @@ export default function Schedule() {
 
   const firstDay = new Date(year, month, 1).getDay();
   const daysInMonth = new Date(year, month + 1, 0).getDate();
-  const isMayDemo = month === 4 && year === 2026;
+
+  const isCurrentMonth = year === todayYear && month === todayMonth;
+  const isPastMonth = year < todayYear || (year === todayYear && month < todayMonth);
+
+  const isAvailableDay = (d: number) => {
+    if (isPastMonth) return false;
+    if (isCurrentMonth && d < todayDate) return false;
+    const dow = new Date(year, month, d).getDay();
+    return dow !== 0 && dow !== 6;
+  };
 
   const dayClass = (d: number) => {
     const classes = ["cal-day"];
-    if (isMayDemo) {
-      if (d < TODAY) classes.push("dim");
-      if (AVAILABLE.has(d)) classes.push("avail");
-      if (d === TODAY) classes.push("today");
-    } else {
-      const dow = new Date(year, month, d).getDay();
-      if (dow !== 0 && dow !== 6) classes.push("avail");
-    }
+    const past = isPastMonth || (isCurrentMonth && d < todayDate);
+    if (past) classes.push("dim");
+    else if (isAvailableDay(d)) classes.push("avail");
+    if (isCurrentMonth && d === todayDate) classes.push("today");
     if (d === selected) classes.push("cal-selected");
     return classes.join(" ");
   };
@@ -368,9 +384,7 @@ export default function Schedule() {
                       ))}
                       {Array.from({ length: daysInMonth }, (_, i) => {
                         const d = i + 1;
-                        const isClickable = isMayDemo
-                          ? AVAILABLE.has(d) && d >= TODAY
-                          : new Date(year, month, d).getDay() !== 0 && new Date(year, month, d).getDay() !== 6;
+                        const isClickable = isAvailableDay(d);
                         return (
                           <button
                             key={d}

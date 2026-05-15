@@ -157,7 +157,7 @@ export default function Team() {
         }
       `}</style>
 
-      <section className="team-section" id="about" ref={sectionRef}>
+      <section className="team-section" id="team" ref={sectionRef}>
         <div className="container">
           <div className="team-head" ref={headRef}>
             <div>
