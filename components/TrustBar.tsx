@@ -1,8 +1,6 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import gsap from "gsap";
-
 const items = [
   "Construction",
   "Infrastructure",
@@ -20,15 +18,12 @@ export default function TrustBar() {
   useEffect(() => {
     const track = trackRef.current;
     if (!track) return;
-    // Infinite left-scroll marquee
-    const totalWidth = track.scrollWidth / 2;
-    const tween = gsap.to(track, {
-      x: -totalWidth,
-      duration: 28,
-      ease: "none",
-      repeat: -1,
+    let tween: { kill: () => void } | undefined;
+    import("gsap").then(({ default: gsap }) => {
+      const totalWidth = track.scrollWidth / 2;
+      tween = gsap.to(track, { x: -totalWidth, duration: 28, ease: "none", repeat: -1 });
     });
-    return () => { tween.kill(); };
+    return () => { tween?.kill(); };
   }, []);
 
   const allItems = [...items, ...items]; // duplicate for seamless loop

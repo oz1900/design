@@ -2,10 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const team = [
   {
@@ -42,17 +39,23 @@ export default function Team() {
   const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
-        opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: "power3.out",
-        scrollTrigger: { trigger: headRef.current, start: "top 82%" },
-      });
-      gsap.from(cardsRef.current!.querySelectorAll(".team-card"), {
-        opacity: 0, y: 32, duration: 0.65, stagger: 0.12, ease: "power3.out",
-        scrollTrigger: { trigger: cardsRef.current, start: "top 80%" },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
+            opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: headRef.current, start: "top 82%" },
+          });
+          gsap.from(cardsRef.current!.querySelectorAll(".team-card"), {
+            opacity: 0, y: 32, duration: 0.65, stagger: 0.12, ease: "power3.out",
+            scrollTrigger: { trigger: cardsRef.current, start: "top 80%" },
+          });
+        }, sectionRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   return (

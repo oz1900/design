@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 const services = [
   {
@@ -104,35 +101,23 @@ export default function Services() {
   const headRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Heading reveal
-      gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
-        opacity: 0,
-        y: 28,
-        duration: 0.7,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: headRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Cards stagger
-      gsap.from(gridRef.current!.querySelectorAll(".svc"), {
-        opacity: 0,
-        y: 32,
-        duration: 0.65,
-        stagger: 0.07,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: gridRef.current,
-          start: "top 80%",
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
+            opacity: 0, y: 28, duration: 0.7, stagger: 0.12, ease: "power3.out",
+            scrollTrigger: { trigger: headRef.current, start: "top 80%" },
+          });
+          gsap.from(gridRef.current!.querySelectorAll(".svc"), {
+            opacity: 0, y: 32, duration: 0.65, stagger: 0.07, ease: "power3.out",
+            scrollTrigger: { trigger: gridRef.current, start: "top 80%" },
+          });
+        }, sectionRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   return (

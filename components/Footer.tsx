@@ -3,26 +3,25 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const footRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(footRef.current!.querySelectorAll(".foot-col, .foot-brand"), {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power2.out",
-        scrollTrigger: { trigger: footRef.current, start: "top 90%" },
-      });
-    }, footRef);
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(footRef.current!.querySelectorAll(".foot-col, .foot-brand"), {
+            opacity: 0, y: 20, duration: 0.6, stagger: 0.1, ease: "power2.out",
+            scrollTrigger: { trigger: footRef.current, start: "top 90%" },
+          });
+        }, footRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   return (

@@ -2,10 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 type LogoEntry =
   | { key: string; type: "img"; src: string; alt: string; width: number; height: number; style?: React.CSSProperties }
@@ -129,30 +126,23 @@ export default function TrustedBy() {
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
-        opacity: 0,
-        y: 24,
-        duration: 0.6,
-        stagger: 0.1,
-        ease: "power3.out",
-        scrollTrigger: { trigger: headRef.current, start: "top 82%" },
-      });
-
-      ScrollTrigger.batch(gridRef.current!.querySelectorAll(".logo-card"), {
-        onEnter: (els) =>
-          gsap.from(els, {
-            opacity: 0,
-            y: 20,
-            duration: 0.5,
-            stagger: 0.06,
-            ease: "power3.out",
-          }),
-        start: "top 85%",
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
+            opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: headRef.current, start: "top 82%" },
+          });
+          ScrollTrigger.batch(gridRef.current!.querySelectorAll(".logo-card"), {
+            onEnter: (els) => gsap.from(els, { opacity: 0, y: 20, duration: 0.5, stagger: 0.06, ease: "power3.out" }),
+            start: "top 85%",
+          });
+        }, sectionRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   return (

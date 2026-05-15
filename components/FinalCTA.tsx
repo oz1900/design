@@ -1,10 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
 
 export default function FinalCTA() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -12,25 +9,24 @@ export default function FinalCTA() {
   const rightRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(leftRef.current, {
-        opacity: 0,
-        x: -36,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
-      });
-      gsap.from(rightRef.current, {
-        opacity: 0,
-        x: 36,
-        scale: 0.97,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
-        delay: 0.1,
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(leftRef.current, {
+            opacity: 0, x: -36, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+          });
+          gsap.from(rightRef.current, {
+            opacity: 0, x: 36, scale: 0.97, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: sectionRef.current, start: "top 80%" },
+            delay: 0.1,
+          });
+        }, sectionRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   return (

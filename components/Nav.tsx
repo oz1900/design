@@ -3,8 +3,6 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import gsap from "gsap";
-
 export default function Nav() {
   const navRef = useRef<HTMLElement>(null);
 
@@ -12,12 +10,8 @@ export default function Nav() {
     const nav = navRef.current;
     if (!nav) return;
 
-    // Slide nav down on first paint
-    gsap.from(nav, {
-      yPercent: -100,
-      duration: 0.7,
-      ease: "power3.out",
-      delay: 0.1,
+    import("gsap").then(({ default: gsap }) => {
+      gsap.from(nav, { yPercent: -100, duration: 0.7, ease: "power3.out", delay: 0.1 });
     });
 
     // Add hairline border on scroll

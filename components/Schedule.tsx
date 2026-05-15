@@ -33,17 +33,19 @@ export default function Schedule() {
   const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      gsap.from(cardRef.current, {
-        opacity: 0,
-        y: 52,
-        scale: 0.98,
-        duration: 0.8,
-        ease: "power3.out",
-        scrollTrigger: { trigger: cardRef.current, start: "top 82%" },
-      });
-    }, sectionRef);
-    return () => ctx.revert();
+    let ctx: { revert: () => void } | undefined;
+    Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ default: gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
+        ctx = gsap.context(() => {
+          gsap.from(cardRef.current, {
+            opacity: 0, y: 52, scale: 0.98, duration: 0.8, ease: "power3.out",
+            scrollTrigger: { trigger: cardRef.current, start: "top 82%" },
+          });
+        }, sectionRef);
+      }
+    );
+    return () => ctx?.revert();
   }, []);
 
   const prevMonth = useCallback(() => {
