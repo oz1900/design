@@ -2,10 +2,6 @@
 
 import { useRef, useEffect, useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 interface StatProps {
   end: number;
@@ -52,34 +48,22 @@ export default function Hero() {
   const tagRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    let ctx: { revert: () => void } | undefined;
+    import("gsap").then(({ default: gsap }) => {
+      ctx = gsap.context(() => {
+        const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+        tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
+          .from(h1Ref.current, { opacity: 0, y: 24, duration: 0.55 }, 0.2)
+          .from(subRef.current, { opacity: 0, y: 18, duration: 0.5 }, 0.32)
+          .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.42)
+          .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.5);
 
-      tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
-        .from(h1Ref.current, { opacity: 0, y: 24, duration: 0.55 }, 0.2)
-        .from(subRef.current, { opacity: 0, y: 18, duration: 0.5 }, 0.32)
-        .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.42)
-        .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.5);
-
-      // Image panel
-      gsap.from(mediaRef.current, {
-        opacity: 0,
-        x: 32,
-        duration: 0.8,
-        ease: "power3.out",
-        delay: 0.15,
-      });
-      // Floating tag
-      gsap.from(tagRef.current, {
-        opacity: 0,
-        y: 20,
-        duration: 0.6,
-        ease: "power2.out",
-        delay: 1.2,
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
+        // Slide only — no opacity hide so the image counts as LCP immediately
+        gsap.from(mediaRef.current, { x: 32, duration: 0.8, ease: "power3.out", delay: 0.15 });
+        gsap.from(tagRef.current, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out", delay: 1.2 });
+      }, sectionRef);
+    });
+    return () => ctx?.revert();
   }, []);
 
   return (
