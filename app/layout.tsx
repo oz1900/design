@@ -119,6 +119,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
+        <meta name="msvalidate.01" content="AAD55155DC2E46AB85B8FD90EF5988CB" />
         <link rel="preload" as="font" type="font/woff2" href="/fonts/CalSans-SemiBold.woff2" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
