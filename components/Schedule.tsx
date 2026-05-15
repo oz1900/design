@@ -13,12 +13,22 @@ const MONTH_NAMES = [
 const DOW = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
 const SLOTS = ["8:00 AM","9:30 AM","11:00 AM","1:00 PM","2:30 PM","4:00 PM"];
 
+// Deterministic block — same dates blocked every visit, looks like real bookings
+function isBooked(year: number, month: number, day: number): boolean {
+  const hash = (year * 373 + month * 97 + day * 31) % 10;
+  return hash < 3; // ~30% of weekdays appear booked
+}
+
 function getNextAvailableDay(fromDate: Date): number {
   const d = new Date(fromDate);
-  const dow = d.getDay();
-  if (dow === 0) return d.getDate() + 1;
-  if (dow === 6) return d.getDate() + 2;
-  return d.getDate();
+  for (let i = 0; i < 14; i++) {
+    const dow = d.getDay();
+    if (dow !== 0 && dow !== 6 && !isBooked(d.getFullYear(), d.getMonth(), d.getDate())) {
+      return d.getDate();
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return fromDate.getDate();
 }
 
 type Status = "idle" | "loading" | "success" | "error";
@@ -92,7 +102,8 @@ export default function Schedule() {
     if (isPastMonth) return false;
     if (isCurrentMonth && d < todayDate) return false;
     const dow = new Date(year, month, d).getDay();
-    return dow !== 0 && dow !== 6;
+    if (dow === 0 || dow === 6) return false;
+    return !isBooked(year, month, d);
   };
 
   const dayClass = (d: number) => {
