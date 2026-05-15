@@ -16,15 +16,18 @@ function AnimatedStat({ end, suffix, label }: StatProps) {
   useEffect(() => {
     const el = numRef.current;
     if (!el) return;
+    let tween: { kill: () => void } | undefined;
     const obj = { val: 0 };
-    const tween = gsap.to(obj, {
-      val: end,
-      duration: 2,
-      ease: "power2.out",
-      delay: 0.8,
-      onUpdate: () => setDisplayed(Math.round(obj.val)),
+    import("gsap").then(({ default: gsap }) => {
+      tween = gsap.to(obj, {
+        val: end,
+        duration: 2,
+        ease: "power2.out",
+        delay: 0.8,
+        onUpdate: () => setDisplayed(Math.round(obj.val)),
+      });
     });
-    return () => { tween.kill(); };
+    return () => { tween?.kill(); };
   }, [end]);
 
   return (
