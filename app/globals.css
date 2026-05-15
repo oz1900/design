@@ -6,7 +6,7 @@
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url("https://cdn.jsdelivr.net/gh/calcom/font/fonts/webfonts/CalSans-SemiBold.woff2") format("woff2");
+  src: url("/fonts/CalSans-SemiBold.woff2") format("woff2");
 }
 
 /* ── Design tokens ─────────────────────────────────────────── */
