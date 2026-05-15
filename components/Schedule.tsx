@@ -27,14 +27,14 @@ export default function Schedule() {
   const sectionRef = useRef<HTMLElement>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
-  const now = new Date();
-  const todayYear = now.getFullYear();
-  const todayMonth = now.getMonth();
-  const todayDate = now.getDate();
-
-  const [month, setMonth] = useState(todayMonth);
-  const [year, setYear] = useState(todayYear);
-  const [selected, setSelected] = useState(() => getNextAvailableDay(now));
+  // Initialize with zeros — real values set client-side in useEffect to avoid
+  // using the static build time as "today".
+  const [todayYear, setTodayYear] = useState(0);
+  const [todayMonth, setTodayMonth] = useState(0);
+  const [todayDate, setTodayDate] = useState(0);
+  const [month, setMonth] = useState(0);
+  const [year, setYear] = useState(0);
+  const [selected, setSelected] = useState(0);
   const [selectedSlot, setSelectedSlot] = useState("11:00 AM");
 
   const [name, setName] = useState("");
@@ -42,6 +42,19 @@ export default function Schedule() {
   const [phone, setPhone] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [errorMsg, setErrorMsg] = useState("");
+
+  useEffect(() => {
+    const now = new Date();
+    const ty = now.getFullYear();
+    const tm = now.getMonth();
+    const td = now.getDate();
+    setTodayYear(ty);
+    setTodayMonth(tm);
+    setTodayDate(td);
+    setYear(ty);
+    setMonth(tm);
+    setSelected(getNextAvailableDay(now));
+  }, []);
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined;
