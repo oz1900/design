@@ -43,8 +43,6 @@ function AnimatedStat({ end, suffix, label }: StatProps) {
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
-  const h1Ref = useRef<HTMLHeadingElement>(null);
-  const subRef = useRef<HTMLParagraphElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
@@ -55,11 +53,9 @@ export default function Hero() {
     import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(eyebrowRef.current, { x: -24, duration: 0.5 }, 0.1)
-          .from(h1Ref.current, { y: 24, duration: 0.55 }, 0.2)
-          .from(subRef.current, { y: 18, duration: 0.5 }, 0.32)
-          .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.42)
-          .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.5);
+        tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
+          .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.2)
+          .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.3);
 
         // Slide only — no opacity hide so the image counts as LCP immediately
         gsap.from(mediaRef.current, { x: 32, duration: 0.8, ease: "power3.out", delay: 0.15 });
@@ -188,11 +184,11 @@ export default function Hero() {
               <div className="eyebrow hero-eyebrow" ref={eyebrowRef}>
                 Construction &amp; industrial safety consulting
               </div>
-              <h1 ref={h1Ref}>
+              <h1>
                 Safer projects.<br />
                 <span className="accent">Stronger performance.</span>
               </h1>
-              <p className="hero-sub" ref={subRef}>
+              <p className="hero-sub">
                 Practical safety consulting, compliance support, training, and project safety services for high-performing construction and industrial teams.
               </p>
               <div className="hero-ctas" ref={ctasRef}>
