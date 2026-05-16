@@ -55,9 +55,9 @@ export default function Hero() {
     import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
-          .from(h1Ref.current, { opacity: 0, y: 24, duration: 0.55 }, 0.2)
-          .from(subRef.current, { opacity: 0, y: 18, duration: 0.5 }, 0.32)
+        tl.from(eyebrowRef.current, { x: -24, duration: 0.5 }, 0.1)
+          .from(h1Ref.current, { y: 24, duration: 0.55 }, 0.2)
+          .from(subRef.current, { y: 18, duration: 0.5 }, 0.32)
           .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.42)
           .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.5);
 
@@ -121,6 +121,7 @@ export default function Hero() {
           color: var(--ink);
           letter-spacing: -1px;
           line-height: 1;
+          min-width: 5ch;
         }
         .hero-stat-lab {
           font-size: 12px;
