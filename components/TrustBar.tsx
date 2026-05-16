@@ -63,23 +63,21 @@ export default function TrustBar() {
         }
         .tbm {
           font-family: var(--font-display);
-          color: var(--ink-soft);
+          color: #6b7280;
           font-size: 17px;
           font-weight: 600;
           letter-spacing: -0.3px;
-          opacity: 0.5;
           padding: 0 28px;
-          transition: opacity .2s ease;
+          transition: color .2s ease;
           flex-shrink: 0;
         }
-        .tbm:hover { opacity: 1; }
+        .tbm:hover { color: var(--ink-soft); }
         .tbm-dot {
-          opacity: 0.25;
           font-family: var(--font-mono);
           font-size: 13px;
           padding: 0 4px;
           flex-shrink: 0;
-          color: var(--muted);
+          color: #9ca3af;
         }
       `}</style>
       <div className="trustbar">

@@ -52,7 +52,7 @@ export default function Footer() {
         .foot-col a:hover { color: #fff; }
         .foot-bottom {
           display: flex; justify-content: space-between; align-items: center;
-          padding-top: 24px; font-size: 12px; color: #6c7388;
+          padding-top: 24px; font-size: 12px; color: #9ca3af;
           flex-wrap: wrap; gap: 12px;
         }
         .foot-certs { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; }
