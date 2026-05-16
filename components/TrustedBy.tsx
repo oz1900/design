@@ -67,7 +67,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-sans)",
           fontSize: 10,
           fontWeight: 600,
-          color: "#374151",
+          color: "#1f2937",
           letterSpacing: "0.14em",
           marginTop: 5,
           display: "block",
@@ -94,7 +94,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-sans)",
           fontSize: 9,
           fontWeight: 600,
-          color: "#374151",
+          color: "#1f2937",
           letterSpacing: "0.18em",
           marginTop: 6,
           display: "block",
@@ -208,7 +208,7 @@ export default function TrustedBy() {
         }
         .logo-css {
           transition: opacity .22s ease;
-          opacity: 0.7;
+          opacity: 0.85;
         }
         .logo-card:hover .logo-css {
           opacity: 1;
