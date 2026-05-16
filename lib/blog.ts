@@ -54,7 +54,7 @@ If your safety program doesn't address substance use policy, EAP access, stress 
 
 Workers who are struggling don't leave it at the gate. They bring it onto the scaffold, into the excavation, behind the wheel of the truck. Mental health is a job hazard. It deserves the same attention as any other.
 
-If you need help building a jobsite wellness component into your safety program, or want to talk about how to approach the topic with your team, **Greenberg Safety can help.** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+If you need help building a jobsite wellness component into your safety program, or want to talk about how to approach the topic with your team, **Greenberg Safety can help.** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
   {
@@ -92,7 +92,7 @@ The gap between what workers know and what they do on the job is closed by super
 
 If your fall protection plan is collecting dust or your workers aren't sure where the anchor points are, that's where we start.
 
-**Greenberg Safety provides jobsite fall protection inspections, OSHA compliance support, and hands-on training.** Call us at [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+**Greenberg Safety provides jobsite fall protection inspections, OSHA compliance support, and hands-on training.** Call us at [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
   {
@@ -144,7 +144,7 @@ New workers and workers returning from time off need gradual exposure to heat. O
 
 The new federal heat standard makes written heat illness prevention plans, environmental monitoring, and structured rest breaks legally required — not just recommended. See our [full guide to the 2026 OSHA heat stress standard](/blog/2026-osha-heat-stress-standard-construction-safety-guide).
 
-**Greenberg Safety helps teams build practical heat illness prevention programs that meet the 2026 standard.** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+**Greenberg Safety helps teams build practical heat illness prevention programs that meet the 2026 standard.** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
   {
@@ -186,7 +186,7 @@ A strong safety program protects more than workers. It protects the schedule, th
 
 **Greenberg Safety provides site inspections, OSHA compliance, safety program development, temporary staffing, OSHA 10 & 30-hour training, incident investigation, and subcontractor management — serving Austin, TX and teams nationwide.**
 
-Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
   {
@@ -222,7 +222,7 @@ OSHA standards change. New workers join. Equipment changes. A training program t
 
 We work across construction, infrastructure, and industrial sectors — building safety programs that meet regulatory requirements and hold up under field conditions. Our incident investigations go beyond the immediate cause to find the systemic failures that allowed the incident to happen in the first place.
 
-**Ready to build a safety program that actually works?** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+**Ready to build a safety program that actually works?** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
   {
@@ -270,7 +270,7 @@ If you don't have a written heat illness prevention plan, you're out of complian
 
 **Greenberg Safety helps teams build heat illness prevention programs that meet the 2026 standard** — from written plans and environmental monitoring protocols to worker training and documentation systems.
 
-Call [(512) 585-7070](tel:+15125857070) or [schedule a site audit](#schedule).
+Call [(512) 585-7070](tel:+15125857070) or [schedule a site audit](/#schedule).
     `,
   },
   {
@@ -319,7 +319,7 @@ Clear communication is underrated. A consultant who can explain a complex regula
 
 **Greenberg Safety brings over a decade of field experience to construction and industrial safety consulting** — serving clients from Austin, TX nationwide.
 
-Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule).
     `,
   },
 ];
