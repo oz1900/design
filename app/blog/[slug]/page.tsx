@@ -168,6 +168,25 @@ export default async function BlogPost({
           <div className="post-body">
             {renderContent(post.content)}
           </div>
+          <div style={{
+            margin: "0 0 48px",
+            padding: "32px",
+            background: "var(--brand-blue-tint)",
+            borderLeft: "4px solid var(--brand-blue)",
+          }}>
+            <p style={{ margin: "0 0 16px", fontWeight: 600, color: "var(--ink)", fontSize: 17 }}>
+              Have questions or need a safety consultant for your project?
+            </p>
+            <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+              <Link href="/#schedule" className="btn btn-primary" style={{ fontSize: 14 }}>
+                Schedule a consultation
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              </Link>
+              <a href="tel:+15125857070" className="btn btn-secondary" style={{ fontSize: 14 }}>
+                (512) 585-7070
+              </a>
+            </div>
+          </div>
           <Link href="/blog" className="post-back">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
               <path d="M19 12H5M12 19l-7-7 7-7"/>
