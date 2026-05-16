@@ -8,6 +8,56 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "mental-health-in-construction",
+    title: "Mental Health in Construction",
+    date: "May 16, 2026",
+    excerpt:
+      "Construction has the highest suicide rate of any industry. The physical hazards get attention — the mental ones rarely do. Here's how to change that on your jobsite.",
+    content: `
+Construction workers die by suicide at a rate four times higher than the national average. That number is higher than falls, struck-by incidents, and electrocutions combined. Yet when most people talk about construction safety, mental health isn't on the list.
+
+It should be the first thing on the list.
+
+## Why Construction Workers Are at Higher Risk
+
+The industry creates conditions that compound stress and erode mental health over time:
+
+**Physical pain is constant.** Repetitive strain, joint damage, back injuries, and chronic pain are part of the job for a large percentage of the workforce. Chronic pain and depression are closely linked — and workers who are injured and out of work face both at once.
+
+**Job insecurity is structural.** Construction work is project-based. Workers finish one job and immediately start looking for the next one. That uncertainty doesn't go away even for experienced tradespeople. Financial stress is one of the most significant drivers of mental health decline.
+
+**The culture discourages asking for help.** The trades have a long tradition of toughness — work through it, don't complain, handle it yourself. That culture saves no one. It just ensures that the workers who are struggling do so quietly.
+
+**Isolation is real.** Long hours, early starts, travel, and project-to-project movement can separate workers from family and community support systems. Loneliness compounds everything else.
+
+**Substance use is high.** The construction industry has among the highest rates of alcohol and opioid use of any sector, often tied to pain management and stress relief. Substance use disorders and mental health crises are deeply intertwined.
+
+## What Supervisors and Safety Professionals Can Do
+
+You don't need to be a counselor to make a difference. What you need is to pay attention and be willing to have a direct conversation.
+
+**Know the warning signs.** Withdrawal from coworkers, changes in behavior or work quality, increased irritability, talking about feeling hopeless or being a burden — these are signals. You don't need to diagnose anything. You need to notice.
+
+**Ask directly.** Research consistently shows that asking someone if they're thinking about suicide does not plant the idea — it opens a door. "Are you okay? I've noticed you haven't seemed like yourself lately" is a place to start. "Are you having thoughts of hurting yourself?" is a question you are allowed to ask.
+
+**Connect workers to resources.** The **988 Suicide and Crisis Lifeline** (call or text 988) is available 24/7. The **Construction Industry Alliance for Suicide Prevention (CIASP)** has jobsite-specific toolkits and talking points. Many EAP (Employee Assistance Programs) offer free confidential counseling — make sure workers know those resources exist and how to access them.
+
+**Make it part of toolbox talks.** Mental health doesn't need its own separate initiative. It can be five minutes in a Monday morning toolbox talk. Normalize the conversation. A superintendent talking openly about stress and asking workers how they're holding up changes the culture faster than a poster in the job trailer.
+
+## The Safety Program Has a Role Here
+
+OSHA's focus is physical hazards. But a safety program that ignores mental health is incomplete. The same rigor that goes into fall protection planning — hazard identification, controls, training, supervision — applies here.
+
+If your safety program doesn't address substance use policy, EAP access, stress management, or how supervisors should respond to a worker in crisis, those are gaps worth closing.
+
+## The Bottom Line
+
+Workers who are struggling don't leave it at the gate. They bring it onto the scaffold, into the excavation, behind the wheel of the truck. Mental health is a job hazard. It deserves the same attention as any other.
+
+If you need help building a jobsite wellness component into your safety program, or want to talk about how to approach the topic with your team, **Greenberg Safety can help.** Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](#schedule).
+    `,
+  },
+  {
     slug: "construction-fall-prevention-stop-falls-before-they-happen",
     title: "Fall Prevention on Construction Sites",
     date: "May 13, 2025",
