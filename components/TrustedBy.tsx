@@ -58,7 +58,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-display)",
           fontSize: 36,
           fontWeight: 700,
-          color: "#1a1a2e",
+          color: "#111827",
           letterSpacing: "-1px",
           lineHeight: 1,
           display: "block",
@@ -67,7 +67,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-sans)",
           fontSize: 10,
           fontWeight: 600,
-          color: "#555",
+          color: "#374151",
           letterSpacing: "0.14em",
           marginTop: 5,
           display: "block",
@@ -85,7 +85,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-display)",
           fontSize: 22,
           fontWeight: 800,
-          color: "#1a1a2e",
+          color: "#111827",
           letterSpacing: "0.06em",
           lineHeight: 1,
           display: "block",
@@ -94,7 +94,7 @@ const logos: LogoEntry[] = [
           fontFamily: "var(--font-sans)",
           fontSize: 9,
           fontWeight: 600,
-          color: "#555",
+          color: "#374151",
           letterSpacing: "0.18em",
           marginTop: 6,
           display: "block",
@@ -111,7 +111,7 @@ const logos: LogoEntry[] = [
         fontFamily: "var(--font-display)",
         fontSize: 30,
         fontWeight: 600,
-        color: "#1a1a2e",
+        color: "#111827",
         letterSpacing: "-0.5px",
         fontStyle: "italic",
         lineHeight: 1,
@@ -207,12 +207,10 @@ export default function TrustedBy() {
           opacity: 1;
         }
         .logo-css {
-          filter: grayscale(1);
-          opacity: 0.55;
-          transition: filter .22s ease, opacity .22s ease;
+          transition: opacity .22s ease;
+          opacity: 0.7;
         }
         .logo-card:hover .logo-css {
-          filter: grayscale(0);
           opacity: 1;
         }
 
