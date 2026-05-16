@@ -303,7 +303,7 @@ export default function Schedule() {
         @media (max-width: 720px) { .slot-grid { grid-template-columns: repeat(2,1fr); } }
       `}</style>
 
-      <section className="schedule" id="schedule" ref={sectionRef}>
+      <section className="schedule" ref={sectionRef}>
         <div className="container">
           <div className="schedule-head">
             <div className="eyebrow">Book a time</div>

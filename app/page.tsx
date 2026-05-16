@@ -20,7 +20,7 @@ export default function Home() {
         <TrustedBy />
         <WhyGreenberg />
         <Team />
-        <Schedule />
+        <div id="schedule"><Schedule /></div>
         <FinalCTA />
       </main>
       <Footer />
