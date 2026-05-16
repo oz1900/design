@@ -53,22 +53,22 @@ const logos: LogoEntry[] = [
     key: "plw",
     type: "css",
     render: () => (
-      <div style={{ textAlign: "center", lineHeight: 1 }}>
+      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
         <span style={{
           fontFamily: "var(--font-display)",
-          fontSize: 38,
+          fontSize: 36,
           fontWeight: 700,
-          color: "#D4A017",
+          color: "#1a1a2e",
           letterSpacing: "-1px",
           lineHeight: 1,
           display: "block",
         }}>plw</span>
         <span style={{
           fontFamily: "var(--font-sans)",
-          fontSize: 11,
-          fontWeight: 500,
-          color: "#999",
-          letterSpacing: "0.12em",
+          fontSize: 10,
+          fontWeight: 600,
+          color: "#555",
+          letterSpacing: "0.14em",
           marginTop: 5,
           display: "block",
           textTransform: "uppercase",
@@ -80,21 +80,21 @@ const logos: LogoEntry[] = [
     key: "goodwyn",
     type: "css",
     render: () => (
-      <div style={{ textAlign: "center", lineHeight: 1 }}>
+      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
         <span style={{
           fontFamily: "var(--font-display)",
-          fontSize: 24,
+          fontSize: 22,
           fontWeight: 800,
-          color: "#1e2d5a",
+          color: "#1a1a2e",
           letterSpacing: "0.06em",
           lineHeight: 1,
           display: "block",
         }}>GOODWYN</span>
         <span style={{
           fontFamily: "var(--font-sans)",
-          fontSize: 10,
-          fontWeight: 500,
-          color: "#999",
+          fontSize: 9,
+          fontWeight: 600,
+          color: "#555",
           letterSpacing: "0.18em",
           marginTop: 6,
           display: "block",
@@ -107,11 +107,11 @@ const logos: LogoEntry[] = [
     key: "xylem",
     type: "css",
     render: () => (
-      <div style={{
+      <div className="logo-css" style={{
         fontFamily: "var(--font-display)",
-        fontSize: 32,
+        fontSize: 30,
         fontWeight: 600,
-        color: "#003a70",
+        color: "#1a1a2e",
         letterSpacing: "-0.5px",
         fontStyle: "italic",
         lineHeight: 1,
@@ -183,7 +183,7 @@ export default function TrustedBy() {
           display: flex;
           align-items: center;
           justify-content: center;
-          padding: 20px 28px;
+          padding: 20px 32px;
           transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
           overflow: hidden;
         }
@@ -192,16 +192,28 @@ export default function TrustedBy() {
           box-shadow: 0 8px 28px rgba(10,16,36,0.08);
           border-color: transparent;
         }
-
-        /* images with colored backgrounds fill the card */
-        .logo-card.logo-card--filled {
-          padding: 0;
-          overflow: hidden;
-        }
-        .logo-card--filled img {
-          width: 100%;
-          height: 100%;
+        .logo-card img {
+          max-width: 120px;
+          max-height: 48px;
+          width: auto;
+          height: auto;
           object-fit: contain;
+          filter: grayscale(1);
+          opacity: 0.55;
+          transition: filter .22s ease, opacity .22s ease;
+        }
+        .logo-card:hover img {
+          filter: grayscale(0);
+          opacity: 1;
+        }
+        .logo-css {
+          filter: grayscale(1);
+          opacity: 0.55;
+          transition: filter .22s ease, opacity .22s ease;
+        }
+        .logo-card:hover .logo-css {
+          filter: grayscale(0);
+          opacity: 1;
         }
 
         @media (max-width: 860px)  { .logo-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -221,32 +233,21 @@ export default function TrustedBy() {
           </div>
 
           <div className="logo-grid" ref={gridRef}>
-            {logos.map((logo) => {
-              const filled = logo.type === "img" && logo.key === "mgc";
-              return (
-                <div
-                  key={logo.key}
-                  className={`logo-card${filled ? " logo-card--filled" : ""}`}
-                >
-                  {logo.type === "img" ? (
-                    <Image
-                      src={logo.src}
-                      alt={logo.alt}
-                      width={logo.width}
-                      height={logo.height}
-                      style={
-                        filled
-                          ? { width: "100%", height: "100%", objectFit: "cover" }
-                          : { maxWidth: "100%", maxHeight: "100%", objectFit: "contain", ...logo.style }
-                      }
-                      unoptimized
-                    />
-                  ) : (
-                    logo.render()
-                  )}
-                </div>
-              );
-            })}
+            {logos.map((logo) => (
+              <div key={logo.key} className="logo-card">
+                {logo.type === "img" ? (
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={logo.width}
+                    height={logo.height}
+                    unoptimized
+                  />
+                ) : (
+                  logo.render()
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
