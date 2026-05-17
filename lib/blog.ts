@@ -3,6 +3,8 @@ export interface BlogPost {
   title: string;
   date: string;
   excerpt: string;
+  image?: string;
+  imageAlt?: string;
   content: string;
 }
 
@@ -11,6 +13,8 @@ export const posts: BlogPost[] = [
     slug: "mental-health-in-construction",
     title: "Mental Health in Construction",
     date: "May 16, 2026",
+    image: "/blog/mental-health.jpg",
+    imageAlt: "Construction worker on a jobsite",
     excerpt:
       "Construction has the highest suicide rate of any industry. The physical hazards get attention — the mental ones rarely do. Here's how to change that on your jobsite.",
     content: `
@@ -61,6 +65,8 @@ If you need help building a jobsite wellness component into your safety program,
     slug: "construction-fall-prevention-stop-falls-before-they-happen",
     title: "Fall Prevention on Construction Sites",
     date: "May 13, 2025",
+    image: "/blog/fall-prevention.jpg",
+    imageAlt: "Worker wearing fall protection harness on a construction site",
     excerpt:
       "Falls are the leading cause of death in construction. Most fall hazards are visible before an incident happens — here's how to stop them.",
     content: `
@@ -98,6 +104,8 @@ If your fall protection plan is collecting dust or your workers aren't sure wher
   {
     slug: "beating-the-heat-in-construction-worker-safety-tips",
     title: "Heat Safety Tips for Construction Workers",
+    image: "/blog/heat-safety.jpg",
+    imageAlt: "Construction workers in hot weather on a jobsite",
     date: "May 12, 2025",
     excerpt:
       "Preventing heat illness doesn't always require expensive solutions. Here are 9 low-cost strategies that actually work on active jobsites.",
@@ -150,6 +158,8 @@ The new federal heat standard makes written heat illness prevention plans, envir
   {
     slug: "when-to-hire-a-construction-safety-consultant-in-austin",
     title: "When to Hire a Construction Safety Consultant",
+    image: "/blog/safety-consultant.jpg",
+    imageAlt: "Safety consultant reviewing plans on a construction site",
     date: "May 12, 2025",
     excerpt:
       "Six scenarios where bringing in a safety consultant protects your schedule, budget, reputation, and insurance position.",
@@ -192,6 +202,8 @@ Call [(512) 585-7070](tel:+15125857070) or [schedule a consultation](/#schedule)
   {
     slug: "building-a-strong-safety-culture-for-osha-compliance",
     title: "Building a Safety Culture for OSHA Compliance",
+    image: "/blog/safety-culture.jpg",
+    imageAlt: "Safety briefing on a construction site",
     date: "May 7, 2025",
     excerpt:
       "OSHA compliance is the floor, not the ceiling. The companies with the best safety records treat safety as a culture — not a checklist.",
@@ -228,6 +240,8 @@ We work across construction, infrastructure, and industrial sectors — building
   {
     slug: "2026-osha-heat-stress-standard-construction-safety-guide",
     title: "2026 OSHA Heat Stress Standard Guide",
+    image: "/blog/osha-heat-stress.jpg",
+    imageAlt: "OSHA heat stress safety signage on a construction site",
     date: "May 6, 2025",
     excerpt:
       "The new federal heat stress standard shifts heat illness prevention from recommended best practices to enforceable employer obligations. Here's what you need to know.",
@@ -276,6 +290,8 @@ Call [(512) 585-7070](tel:+15125857070) or [schedule a site audit](/#schedule).
   {
     slug: "the-benefits-of-hiring-a-safety-consultant",
     title: "The Benefits of Hiring a Safety Consultant",
+    image: "/blog/hiring-consultant.jpg",
+    imageAlt: "Safety professional conducting a site inspection",
     date: "January 23, 2021",
     excerpt:
       "External safety consultants provide something internal teams can't: objectivity. Here's what to look for and when to bring one in.",

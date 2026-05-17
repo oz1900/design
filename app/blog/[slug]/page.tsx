@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import { posts, getPost } from "@/lib/blog";
@@ -159,6 +160,18 @@ export default async function BlogPost({
           .post-back:hover { color: var(--ink); }
         `}</style>
 
+        {post.image && (
+          <div style={{ width: "100%", aspectRatio: "21/9", maxHeight: 480, overflow: "hidden", position: "relative" }}>
+            <Image
+              src={post.image}
+              alt={post.imageAlt ?? post.title}
+              fill
+              style={{ objectFit: "cover", objectPosition: "center" }}
+              priority
+              sizes="100vw"
+            />
+          </div>
+        )}
         <div className="container">
           <div className="post-header">
             <div className="eyebrow">Safety Resources</div>
