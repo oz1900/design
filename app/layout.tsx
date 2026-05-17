@@ -144,6 +144,7 @@ h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);margin:0;font-weigh
 .btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
 .btn-secondary:hover{background:var(--ink);color:#fff}
 .btn-sm{padding:11px 18px;font-size:14px}
+[id]{scroll-margin-top:78px}
         ` }} />
         <link rel="preload" as="image" href="/hero.jpg" fetchPriority="high" />
         <script

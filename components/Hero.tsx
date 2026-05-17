@@ -155,7 +155,7 @@ export default function Hero() {
         }
         .hero-badge {
           position: absolute;
-          top: 32px; right: 32px;
+          bottom: 32px; right: 32px;
           z-index: 3;
           background: rgba(10,16,36,0.7);
           backdrop-filter: blur(10px);
@@ -170,11 +170,37 @@ export default function Hero() {
         }
         .hero-badge b { font-weight: 600; color: #fff; font-size: 13px; display: block; }
         .hero-badge span { color: #b8c0d6; }
-        @media (max-width: 720px) {
-          .hero h1 { font-size: clamp(40px, 10vw, 64px); letter-spacing: -2px; }
-          .hero-stats { gap: 28px; }
-          .hero-badge { top: auto; bottom: auto; right: 20px; top: 20px; }
-          .hero-content { padding-bottom: 48px; }
+
+        @media (max-width: 900px) {
+          .hero h1 { font-size: clamp(36px, 8vw, 60px); letter-spacing: -1.5px; }
+          .hero-sub { font-size: 16px; max-width: 44ch; }
+          .hero-stats { gap: 24px; }
+          .hero-badge { display: none; }
+        }
+        @media (max-width: 600px) {
+          .hero { min-height: 100svh; }
+          .hero-content { padding: 0 0 40px; }
+          .hero h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -1px; margin-bottom: 16px; }
+          .hero-sub { font-size: 15px; margin-bottom: 28px; }
+          .hero-ctas { margin-bottom: 40px; gap: 10px; }
+          .hero-ctas .btn { padding: 13px 18px; font-size: 14px; }
+          .hero-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 16px;
+            padding-top: 24px;
+          }
+          .hero-stat-num { font-size: 26px; }
+          .hero-stat-lab { font-size: 11px; }
+          .hero-overlay {
+            background: linear-gradient(
+              to bottom,
+              rgba(5,10,28,0.5) 0%,
+              rgba(5,10,28,0.2) 35%,
+              rgba(5,10,28,0.75) 65%,
+              rgba(5,10,28,0.95) 100%
+            );
+          }
         }
       `}</style>
 
@@ -186,6 +212,7 @@ export default function Hero() {
           loop
           playsInline
           poster="/hero.jpg"
+          style={{ objectPosition: "center 30%" }}
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
