@@ -217,6 +217,7 @@ export default function Hero() {
                 height={750}
                 style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, filter: "saturate(0.92) contrast(1.02)" }}
                 priority
+                fetchPriority="high"
                 sizes="(max-width: 1000px) 100vw, 50vw"
               />
               <div className="hero-tag" ref={tagRef}>
