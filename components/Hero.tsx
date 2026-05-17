@@ -9,12 +9,9 @@ interface StatProps {
 }
 
 function AnimatedStat({ end, suffix, label }: StatProps) {
-  const numRef = useRef<HTMLDivElement>(null);
   const [displayed, setDisplayed] = useState(0);
 
   useEffect(() => {
-    const el = numRef.current;
-    if (!el) return;
     let tween: { kill: () => void } | undefined;
     const obj = { val: 0 };
     import("gsap").then(({ default: gsap }) => {
@@ -22,7 +19,7 @@ function AnimatedStat({ end, suffix, label }: StatProps) {
         val: end,
         duration: 2,
         ease: "power2.out",
-        delay: 0.8,
+        delay: 1.2,
         onUpdate: () => setDisplayed(Math.round(obj.val)),
       });
     });
@@ -30,10 +27,8 @@ function AnimatedStat({ end, suffix, label }: StatProps) {
   }, [end]);
 
   return (
-    <div>
-      <div className="hero-stat-num" ref={numRef}>
-        {displayed.toLocaleString()}{suffix}
-      </div>
+    <div className="hero-stat">
+      <div className="hero-stat-num">{displayed.toLocaleString()}{suffix}</div>
       <div className="hero-stat-lab">{label}</div>
     </div>
   );
@@ -41,24 +36,23 @@ function AnimatedStat({ end, suffix, label }: StatProps) {
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
+  const overlayRef = useRef<HTMLDivElement>(null);
   const eyebrowRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const subRef = useRef<HTMLParagraphElement>(null);
   const ctasRef = useRef<HTMLDivElement>(null);
   const statsRef = useRef<HTMLDivElement>(null);
-  const mediaRef = useRef<HTMLDivElement>(null);
-  const tagRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined;
     import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(eyebrowRef.current, { opacity: 0, x: -24, duration: 0.5 }, 0.1)
-          .from(ctasRef.current, { opacity: 0, y: 14, duration: 0.4 }, 0.2)
-          .from(statsRef.current, { opacity: 0, y: 12, duration: 0.4 }, 0.3);
-
-        // Slide only — no opacity hide so the image counts as LCP immediately
-        gsap.from(mediaRef.current, { x: 32, duration: 0.8, ease: "power3.out", delay: 0.15 });
-        gsap.from(tagRef.current, { opacity: 0, y: 20, duration: 0.6, ease: "power2.out", delay: 1.2 });
+        tl.from(eyebrowRef.current, { opacity: 0, y: 16, duration: 0.6 }, 0.3)
+          .from(headingRef.current, { opacity: 0, y: 24, duration: 0.7 }, 0.5)
+          .from(subRef.current,    { opacity: 0, y: 16, duration: 0.6 }, 0.75)
+          .from(ctasRef.current,   { opacity: 0, y: 12, duration: 0.5 }, 0.9)
+          .from(statsRef.current,  { opacity: 0, y: 10, duration: 0.5 }, 1.05);
       }, sectionRef);
     });
     return () => ctx?.revert();
@@ -68,168 +62,172 @@ export default function Hero() {
     <>
       <style>{`
         .hero {
-          padding: 56px 0 88px;
           position: relative;
+          min-height: 100svh;
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-end;
           overflow: hidden;
         }
-        .hero-grid {
-          display: grid;
-          grid-template-columns: minmax(0,1.05fr) minmax(0,1fr);
-          gap: 64px;
-          align-items: center;
+        .hero-video {
+          position: absolute;
+          inset: 0;
+          width: 100%; height: 100%;
+          object-fit: cover;
+          z-index: 0;
         }
-        .hero-text { position: relative; z-index: 2; }
-        .hero-eyebrow { margin-bottom: 28px; }
+        .hero-overlay {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          background: linear-gradient(
+            to bottom,
+            rgba(5,10,28,0.35) 0%,
+            rgba(5,10,28,0.15) 40%,
+            rgba(5,10,28,0.72) 75%,
+            rgba(5,10,28,0.92) 100%
+          );
+        }
+        .hero-content {
+          position: relative;
+          z-index: 2;
+          padding: 0 0 72px;
+        }
+        .hero-eyebrow {
+          margin-bottom: 24px;
+          color: rgba(255,255,255,0.7);
+        }
+        .hero-eyebrow.eyebrow { color: rgba(255,255,255,0.7); }
+        .hero-eyebrow.eyebrow::before { background: rgba(255,255,255,0.5); }
         .hero h1 {
-          font-size: clamp(44px, 5.4vw, 76px);
-          line-height: 1.02;
-          letter-spacing: -2.5px;
-          margin: 0 0 22px;
+          font-size: clamp(48px, 6vw, 88px);
+          line-height: 1.0;
+          letter-spacing: -3px;
+          margin: 0 0 24px;
           text-wrap: balance;
+          color: #fff;
+          max-width: 18ch;
         }
-        .hero h1 .accent { color: var(--brand-blue); }
+        .hero h1 .accent { color: #6fa3ff; }
         .hero-sub {
-          font-size: 19px;
-          line-height: 1.5;
-          color: var(--text);
+          font-size: 18px;
+          line-height: 1.55;
+          color: rgba(255,255,255,0.75);
           max-width: 52ch;
-          margin: 0 0 36px;
+          margin: 0 0 40px;
         }
         .hero-ctas {
           display: flex;
           gap: 14px;
           flex-wrap: wrap;
-          margin-bottom: 48px;
+          margin-bottom: 64px;
+        }
+        .hero .btn-secondary {
+          border-color: rgba(255,255,255,0.5);
+          color: #fff;
+        }
+        .hero .btn-secondary:hover {
+          background: rgba(255,255,255,0.15);
+          color: #fff;
         }
         .hero-stats {
-          display: grid;
-          grid-template-columns: repeat(3, auto);
-          gap: 36px;
+          display: flex;
+          gap: 48px;
           padding-top: 32px;
-          border-top: 1px solid var(--hairline);
-          max-width: 560px;
+          border-top: 1px solid rgba(255,255,255,0.15);
+          flex-wrap: wrap;
         }
         .hero-stat-num {
           font-family: var(--font-display);
-          font-size: 32px;
+          font-size: 34px;
           font-weight: 600;
-          color: var(--ink);
+          color: #fff;
           letter-spacing: -1px;
           line-height: 1;
           min-width: 5ch;
         }
         .hero-stat-lab {
           font-size: 12px;
-          color: var(--muted);
+          color: rgba(255,255,255,0.55);
           margin-top: 6px;
           line-height: 1.35;
           max-width: 16ch;
         }
-        .hero-media {
-          position: relative;
-          aspect-ratio: 16/10;
-          max-height: 560px;
-          overflow: hidden;
-          border-radius: 2px;
-        }
-        .hero-media video {
-          width: 100%; height: 100%;
-          object-fit: cover;
-          border-radius: 2px;
-          filter: saturate(0.85) contrast(1.08);
-        }
-        .hero-deco-top {
+        .hero-badge {
           position: absolute;
-          top: -16px; right: -16px;
-          width: 60%; height: 60%;
-          background: var(--brand-blue-soft);
-          z-index: -1;
-          pointer-events: none;
-        }
-        .hero-deco-bottom {
-          position: absolute;
-          bottom: -16px; left: -16px;
-          width: 40%; height: 30%;
-          background: var(--brand-blue);
-          z-index: -1;
-          pointer-events: none;
-        }
-        .hero-tag {
-          position: absolute;
-          bottom: 28px; left: 28px;
-          background: rgba(10,16,36,0.86);
-          backdrop-filter: blur(8px);
+          top: 32px; right: 32px;
+          z-index: 3;
+          background: rgba(10,16,36,0.7);
+          backdrop-filter: blur(10px);
           color: #fff;
-          padding: 14px 18px;
-          font-size: 13px;
+          padding: 12px 16px;
+          font-size: 12px;
           line-height: 1.4;
           display: flex;
-          gap: 14px;
+          gap: 12px;
           align-items: center;
           border-left: 3px solid var(--brand-blue);
         }
-        .hero-tag b { font-weight: 600; color: #fff; font-size: 14px; display: block; }
-        .hero-tag span { color: #b8c0d6; }
-        @media (max-width: 1000px) {
-          .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-          .hero-media { aspect-ratio: 16/10; max-height: none; }
-        }
+        .hero-badge b { font-weight: 600; color: #fff; font-size: 13px; display: block; }
+        .hero-badge span { color: #b8c0d6; }
         @media (max-width: 720px) {
-          .hero-stats { grid-template-columns: 1fr 1fr; }
+          .hero h1 { font-size: clamp(40px, 10vw, 64px); letter-spacing: -2px; }
+          .hero-stats { gap: 28px; }
+          .hero-badge { top: auto; bottom: auto; right: 20px; top: 20px; }
+          .hero-content { padding-bottom: 48px; }
         }
       `}</style>
-      <section className="hero" id="home" ref={sectionRef}>
-        <div className="container">
-          <div className="hero-grid">
-            <div className="hero-text">
-              <div className="eyebrow hero-eyebrow" ref={eyebrowRef}>
-                Construction &amp; industrial safety consulting
-              </div>
-              <h1>
-                Safer projects.<br />
-                <span className="accent">Stronger performance.</span>
-              </h1>
-              <p className="hero-sub">
-                Practical safety consulting, compliance support, training, and project safety services for high-performing construction and industrial teams.
-              </p>
-              <div className="hero-ctas" ref={ctasRef}>
-                <a href="#schedule" className="btn btn-primary">
-                  Schedule a consultation
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M5 12h14M13 5l7 7-7 7"/>
-                  </svg>
-                </a>
-                <a href="#services" className="btn btn-secondary">Our services</a>
-              </div>
-              <div className="hero-stats" ref={statsRef}>
-                <AnimatedStat end={10} suffix="+" label="Years on active jobsites" />
-                <AnimatedStat end={1300000} suffix="" label="Man-hours, zero OSHA recordables" />
-                <AnimatedStat end={5000} suffix="+" label="Workers supervised without lost-time injury" />
-              </div>
-            </div>
 
-            <div className="hero-media" ref={mediaRef}>
-              <div className="hero-deco-top" />
-              <div className="hero-deco-bottom" />
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster="/hero.jpg"
-              >
-                <source src="/hero.mp4" type="video/mp4" />
-              </video>
-              <div className="hero-tag" ref={tagRef}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-                  <path d="m9 12 2 2 4-4"/>
+      <section className="hero" id="home" ref={sectionRef}>
+        <video
+          className="hero-video"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero.jpg"
+        >
+          <source src="/hero.mp4" type="video/mp4" />
+        </video>
+
+        <div className="hero-overlay" ref={overlayRef} />
+
+        <div className="hero-badge">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="m9 12 2 2 4-4"/>
+          </svg>
+          <div>
+            <b>Field-led</b>
+            <span>SHEP · CHSO · SSH certified</span>
+          </div>
+        </div>
+
+        <div className="hero-content">
+          <div className="container">
+            <div className="eyebrow hero-eyebrow" ref={eyebrowRef}>
+              Construction &amp; industrial safety consulting
+            </div>
+            <h1 ref={headingRef}>
+              Safer projects.<br />
+              <span className="accent">Stronger performance.</span>
+            </h1>
+            <p className="hero-sub" ref={subRef}>
+              Practical safety consulting, compliance support, training, and project safety services for high-performing construction and industrial teams.
+            </p>
+            <div className="hero-ctas" ref={ctasRef}>
+              <a href="#schedule" className="btn btn-primary">
+                Schedule a consultation
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M5 12h14M13 5l7 7-7 7"/>
                 </svg>
-                <div>
-                  <b>Field-led</b>
-                  <span>SHEP · CHSO · SSH certified</span>
-                </div>
-              </div>
+              </a>
+              <a href="#services" className="btn btn-secondary">Our services</a>
+            </div>
+            <div className="hero-stats" ref={statsRef}>
+              <AnimatedStat end={10} suffix="+" label="Years on active jobsites" />
+              <AnimatedStat end={1300000} suffix="" label="Man-hours, zero OSHA recordables" />
+              <AnimatedStat end={5000} suffix="+" label="Workers supervised without lost-time injury" />
             </div>
           </div>
         </div>

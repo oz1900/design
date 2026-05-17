@@ -28,16 +28,17 @@ export default function Nav() {
     <>
       <style>{`
         .gs-nav {
-          position: sticky;
-          top: 0;
+          position: fixed;
+          top: 0; left: 0; right: 0;
           z-index: 60;
-          background: rgba(255,255,255,0.94);
-          backdrop-filter: saturate(180%) blur(12px);
-          -webkit-backdrop-filter: saturate(180%) blur(12px);
+          background: transparent;
           border-bottom: 1px solid transparent;
-          transition: border-color .2s ease, box-shadow .2s ease;
+          transition: background .3s ease, border-color .3s ease, box-shadow .3s ease;
         }
         .gs-nav.scrolled {
+          background: rgba(255,255,255,0.96);
+          backdrop-filter: saturate(180%) blur(12px);
+          -webkit-backdrop-filter: saturate(180%) blur(12px);
           border-bottom-color: var(--hairline);
           box-shadow: 0 1px 0 0 var(--hairline);
         }
@@ -56,12 +57,14 @@ export default function Nav() {
         .gs-nav-links a {
           font-size: 14px;
           font-weight: 500;
-          color: var(--text);
+          color: rgba(255,255,255,0.85);
           position: relative;
           padding: 4px 0;
           transition: color .15s ease;
         }
-        .gs-nav-links a:hover { color: var(--ink); }
+        .gs-nav-links a:hover { color: #fff; }
+        .gs-nav.scrolled .gs-nav-links a { color: var(--text); }
+        .gs-nav.scrolled .gs-nav-links a:hover { color: var(--ink); }
         .gs-nav-links a::after {
           content: '';
           position: absolute;
@@ -73,6 +76,15 @@ export default function Nav() {
           transition: transform .22s ease;
         }
         .gs-nav-links a:hover::after { transform: scaleX(1); }
+        .gs-nav:not(.scrolled) .nav-logo { filter: brightness(0) invert(1); }
+        .gs-nav:not(.scrolled) .btn-primary {
+          background: rgba(255,255,255,0.15);
+          border: 1.5px solid rgba(255,255,255,0.5);
+          color: #fff;
+        }
+        .gs-nav:not(.scrolled) .btn-primary:hover {
+          background: rgba(255,255,255,0.28);
+        }
         .nav-cta-mobile { display: none; }
         @media (max-width: 720px) {
           .gs-nav-links { display: none; }
@@ -88,7 +100,8 @@ export default function Nav() {
               alt="Greenberg Safety"
               width={160}
               height={36}
-              style={{ height: 36, width: "auto" }}
+              className="nav-logo"
+              style={{ height: 36, width: "auto", transition: "filter .3s ease" }}
               sizes="160px"
               priority
             />
