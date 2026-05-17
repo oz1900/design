@@ -37,6 +37,7 @@ export default function TrustBar() {
           border-bottom: 1px solid var(--hairline);
           padding: 24px 0;
           overflow: hidden;
+          scroll-margin-top: 78px;
         }
         .trustbar-track-wrap {
           display: flex;

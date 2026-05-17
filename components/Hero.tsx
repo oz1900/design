@@ -92,7 +92,7 @@ export default function Hero() {
         .hero-content {
           position: relative;
           z-index: 2;
-          padding: 0 0 72px;
+          padding: 96px 0 72px;
         }
         .hero-eyebrow {
           margin-bottom: 24px;
@@ -192,7 +192,7 @@ export default function Hero() {
         }
         @media (max-width: 600px) {
           .hero { min-height: 100svh; }
-          .hero-content { padding: 0 0 40px; }
+          .hero-content { padding: 88px 0 40px; }
           .hero h1 { font-size: clamp(32px, 9vw, 48px); letter-spacing: -1px; margin-bottom: 16px; }
           .hero-sub { font-size: 15px; margin-bottom: 28px; }
           .hero-ctas { margin-bottom: 40px; gap: 10px; }
