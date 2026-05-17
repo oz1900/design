@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
-import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -121,6 +120,31 @@ export default function RootLayout({
       <head>
         <meta name="msvalidate.01" content="AAD55155DC2E46AB85B8FD90EF5988CB" />
         <link rel="preload" as="font" type="font/woff2" href="/fonts/CalSans-SemiBold.woff2" crossOrigin="anonymous" />
+        <style dangerouslySetInnerHTML={{ __html: `
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+button{cursor:pointer;border:none;background:transparent;font:inherit}
+ul,ol{list-style:none}
+input,textarea,select{font:inherit}
+@font-face{font-family:"Cal Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/CalSans-SemiBold.woff2") format("woff2")}
+:root{--brand-blue:#0F4BF3;--brand-blue-deep:#0A36B8;--brand-blue-soft:#e8f0fd;--brand-blue-tint:#f5f8ff;--ink:#0a1024;--ink-soft:#1d2440;--text:#2a3142;--muted:#6b7280;--hairline:#e5e7eb;--canvas:#ffffff;--canvas-soft:#f7f8fb;--font-display:"Cal Sans","Inter",system-ui,-apple-system,sans-serif;--font-sans:"Inter",system-ui,-apple-system,sans-serif;--font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--canvas);color:var(--text);font-family:var(--font-sans);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);margin:0;font-weight:600}
+.container{max-width:1240px;margin:0 auto;padding:0 32px}
+@media(max-width:720px){.container{padding:0 20px}}
+.eyebrow{font-family:var(--font-sans);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--brand-blue);display:inline-flex;align-items:center;gap:12px}
+.eyebrow::before{content:'';width:28px;height:2px;background:var(--brand-blue);display:inline-block;flex-shrink:0}
+.section-h{font-size:clamp(34px,4vw,52px);line-height:1.05;letter-spacing:-1.5px;text-wrap:balance}
+.lede{color:var(--text);font-size:17px;line-height:1.55;max-width:56ch}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:4px;font-family:var(--font-sans);font-weight:600;font-size:15px;line-height:1;border:none;cursor:pointer;text-decoration:none;transition:background-color .18s ease,color .18s ease,box-shadow .18s ease}
+.btn-primary{background:var(--brand-blue);color:#fff}
+.btn-primary:hover{background:var(--brand-blue-deep)}
+.btn-secondary{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-secondary:hover{background:var(--ink);color:#fff}
+.btn-sm{padding:11px 18px;font-size:14px}
+        ` }} />
         <link rel="preload" as="image" href="/_next/image?url=%2Fhero.jpg&w=1200&q=75" fetchPriority="high" />
         <script
           type="application/ld+json"
