@@ -3,9 +3,14 @@
 import { useRef, useEffect } from "react";
 import Image from "next/image";
 
-const certs = [
+type CertEntry =
+  | { key: string; type: "img"; src: string; alt: string; width: number; height: number }
+  | { key: string; type: "css"; abbr: string; full: string; color: string };
+
+const certs: CertEntry[] = [
   {
     key: "nccer",
+    type: "img",
     src: "/logos/nccer.svg",
     alt: "NCCER — National Center for Construction Education & Research",
     width: 160,
@@ -13,6 +18,7 @@ const certs = [
   },
   {
     key: "bcsp",
+    type: "img",
     src: "/logos/bcsp.png",
     alt: "BCSP — Board of Certified Safety Professionals",
     width: 160,
@@ -20,6 +26,7 @@ const certs = [
   },
   {
     key: "csp",
+    type: "img",
     src: "/logos/csp.png",
     alt: "CSP — Certified Safety Professional",
     width: 120,
@@ -27,10 +34,32 @@ const certs = [
   },
   {
     key: "assp",
+    type: "img",
     src: "/logos/assp.png",
     alt: "ASSP — American Society of Safety Professionals",
     width: 160,
     height: 56,
+  },
+  {
+    key: "shep",
+    type: "css",
+    abbr: "SHEP",
+    full: "Safety & Health Evaluation Professional",
+    color: "#0F4BF3",
+  },
+  {
+    key: "chso",
+    type: "css",
+    abbr: "CHSO",
+    full: "Certified Health & Safety Official",
+    color: "#0F4BF3",
+  },
+  {
+    key: "ssh",
+    type: "css",
+    abbr: "SSH",
+    full: "Site Safety & Health Officer",
+    color: "#0F4BF3",
   },
 ];
 
@@ -127,14 +156,39 @@ export default function Certifications() {
             <div className="certs-row">
               {certs.map((c) => (
                 <div key={c.key} className="cert-card">
-                  <Image
-                    src={c.src}
-                    alt={c.alt}
-                    width={c.width}
-                    height={c.height}
-                    style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }}
-                    unoptimized
-                  />
+                  {c.type === "img" ? (
+                    <Image
+                      src={c.src}
+                      alt={c.alt}
+                      width={c.width}
+                      height={c.height}
+                      style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }}
+                      unoptimized
+                    />
+                  ) : (
+                    <div style={{ textAlign: "center" }}>
+                      <span style={{
+                        fontFamily: "var(--font-display)",
+                        fontSize: 24,
+                        fontWeight: 800,
+                        color: c.color,
+                        letterSpacing: "0.04em",
+                        lineHeight: 1,
+                        display: "block",
+                        marginBottom: 6,
+                      }}>{c.abbr}</span>
+                      <span style={{
+                        fontFamily: "var(--font-sans)",
+                        fontSize: 9,
+                        fontWeight: 600,
+                        color: "var(--muted)",
+                        letterSpacing: "0.1em",
+                        textTransform: "uppercase",
+                        lineHeight: 1.4,
+                        display: "block",
+                      }}>{c.full}</span>
+                    </div>
+                  )}
                 </div>
               ))}
             </div>

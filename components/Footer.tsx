@@ -101,7 +101,7 @@ export default function Footer() {
           </div>
           <div className="foot-bottom">
             <span>© 2026 Greenberg Safety. All rights reserved.</span>
-            <span className="foot-certs">OSHA · SHEP · CHSO · SSH · HAZWOPER</span>
+            <span className="foot-certs">SHEP · CHSO · CSP · BCSP · ASSP · NCCER</span>
           </div>
         </div>
       </footer>
