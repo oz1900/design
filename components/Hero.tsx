@@ -121,7 +121,15 @@ export default function Hero() {
           display: flex;
           gap: 14px;
           flex-wrap: wrap;
+          align-items: center;
           margin-bottom: 64px;
+        }
+        .hero-ctas-divider {
+          font-size: 12px;
+          color: rgba(255,255,255,0.4);
+          font-weight: 500;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
         }
         .hero .btn-secondary {
           border-color: rgba(255,255,255,0.5);
@@ -130,6 +138,10 @@ export default function Hero() {
         .hero .btn-secondary:hover {
           background: rgba(255,255,255,0.15);
           color: #fff;
+        }
+        .hero-phone-btn {
+          font-size: 16px;
+          letter-spacing: 0.01em;
         }
         .hero-stats {
           display: flex;
@@ -249,7 +261,13 @@ export default function Hero() {
                   <path d="M5 12h14M13 5l7 7-7 7"/>
                 </svg>
               </a>
-              <a href="#services" className="btn btn-secondary">Our services</a>
+              <span className="hero-ctas-divider">or</span>
+              <a href="tel:+15125857070" className="btn btn-secondary hero-phone-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.41 2 2 0 0 1 3.57 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.96a16 16 0 0 0 6.13 6.13l.95-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.03z"/>
+                </svg>
+                (512) 585-7070
+              </a>
             </div>
             <div className="hero-stats" ref={statsRef}>
               <AnimatedStat end={10} suffix="+" label="Years on active jobsites" />
