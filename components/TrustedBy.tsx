@@ -26,14 +26,6 @@ const logos: LogoEntry[] = [
     height: 56,
   },
   {
-    key: "heb",
-    type: "img",
-    src: "/logos/heb.png",
-    alt: "H-E-B",
-    width: 100,
-    height: 40,
-  },
-  {
     key: "mgc",
     type: "img",
     src: "/logos/mgc.png",
@@ -48,6 +40,22 @@ const logos: LogoEntry[] = [
     alt: "MWH Constructors",
     width: 72,
     height: 72,
+  },
+  {
+    key: "heb",
+    type: "img",
+    src: "/logos/heb.png",
+    alt: "H-E-B",
+    width: 100,
+    height: 40,
+  },
+  {
+    key: "topmar",
+    type: "img",
+    src: "/logos/topmar.png",
+    alt: "Topmar Construction",
+    width: 160,
+    height: 45,
   },
   {
     key: "plw",
