@@ -5,7 +5,7 @@ import Image from "next/image";
 
 
 type LogoEntry =
-  | { key: string; type: "img"; src: string; alt: string; width: number; height: number; style?: React.CSSProperties }
+  | { key: string; type: "img"; src: string; alt: string; width: number; height: number; dark?: boolean; style?: React.CSSProperties }
   | { key: string; type: "css"; render: () => React.ReactNode };
 
 const logos: LogoEntry[] = [
@@ -56,6 +56,7 @@ const logos: LogoEntry[] = [
     alt: "Topmar Construction",
     width: 160,
     height: 45,
+    dark: true,
   },
   {
     key: "plw",
@@ -214,6 +215,18 @@ export default function TrustedBy() {
           filter: grayscale(0);
           opacity: 1;
         }
+        .logo-card-dark {
+          background: #0d1526;
+          border-color: #0d1526;
+        }
+        .logo-card-dark img {
+          filter: none;
+          opacity: 0.9;
+        }
+        .logo-card-dark:hover img {
+          filter: none;
+          opacity: 1;
+        }
         .logo-css {
           transition: opacity .22s ease;
           opacity: 0.85;
@@ -240,7 +253,7 @@ export default function TrustedBy() {
 
           <div className="logo-grid" ref={gridRef}>
             {logos.map((logo) => (
-              <div key={logo.key} className="logo-card">
+              <div key={logo.key} className={`logo-card${logo.type === "img" && logo.dark ? " logo-card-dark" : ""}`}>
                 {logo.type === "img" ? (
                   <Image
                     src={logo.src}
