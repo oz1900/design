@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
 import TrustedBy from "@/components/TrustedBy";
+import Certifications from "@/components/Certifications";
 import WhyGreenberg from "@/components/WhyGreenberg";
 import Team from "@/components/Team";
 import Schedule from "@/components/Schedule";
@@ -18,6 +19,7 @@ export default function Home() {
         <TrustBar />
         <Services />
         <TrustedBy />
+        <Certifications />
         <WhyGreenberg />
         <Team />
         <div id="schedule"><Schedule /></div>

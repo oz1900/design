@@ -26,31 +26,12 @@ const logos: LogoEntry[] = [
     height: 56,
   },
   {
-    key: "nccer",
-    type: "css",
-    render: () => (
-      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 26,
-          fontWeight: 800,
-          color: "#0047AB",
-          letterSpacing: "0.04em",
-          lineHeight: 1,
-          display: "block",
-        }}>NCCER</span>
-        <span style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 8,
-          fontWeight: 600,
-          color: "#1f2937",
-          letterSpacing: "0.12em",
-          marginTop: 5,
-          display: "block",
-          textTransform: "uppercase",
-        }}>Craft Training & Certification</span>
-      </div>
-    ),
+    key: "heb",
+    type: "img",
+    src: "/logos/heb.png",
+    alt: "H-E-B",
+    width: 100,
+    height: 40,
   },
   {
     key: "mgc",
@@ -135,87 +116,6 @@ const logos: LogoEntry[] = [
         fontStyle: "italic",
         lineHeight: 1,
       }}>Xylem</div>
-    ),
-  },
-  {
-    key: "bcsp",
-    type: "css",
-    render: () => (
-      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 26,
-          fontWeight: 800,
-          color: "#003087",
-          letterSpacing: "0.06em",
-          lineHeight: 1,
-          display: "block",
-        }}>BCSP</span>
-        <span style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 8,
-          fontWeight: 600,
-          color: "#1f2937",
-          letterSpacing: "0.12em",
-          marginTop: 5,
-          display: "block",
-          textTransform: "uppercase",
-        }}>Board of Certified Safety Professionals</span>
-      </div>
-    ),
-  },
-  {
-    key: "csp",
-    type: "css",
-    render: () => (
-      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 26,
-          fontWeight: 800,
-          color: "#003087",
-          letterSpacing: "0.06em",
-          lineHeight: 1,
-          display: "block",
-        }}>CSP</span>
-        <span style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 8,
-          fontWeight: 600,
-          color: "#1f2937",
-          letterSpacing: "0.12em",
-          marginTop: 5,
-          display: "block",
-          textTransform: "uppercase",
-        }}>Certified Safety Professional</span>
-      </div>
-    ),
-  },
-  {
-    key: "assp",
-    type: "css",
-    render: () => (
-      <div className="logo-css" style={{ textAlign: "center", lineHeight: 1 }}>
-        <span style={{
-          fontFamily: "var(--font-display)",
-          fontSize: 26,
-          fontWeight: 800,
-          color: "#C8102E",
-          letterSpacing: "0.04em",
-          lineHeight: 1,
-          display: "block",
-        }}>ASSP</span>
-        <span style={{
-          fontFamily: "var(--font-sans)",
-          fontSize: 8,
-          fontWeight: 600,
-          color: "#1f2937",
-          letterSpacing: "0.12em",
-          marginTop: 5,
-          display: "block",
-          textTransform: "uppercase",
-        }}>American Society of Safety Professionals</span>
-      </div>
     ),
   },
 ];
@@ -321,12 +221,12 @@ export default function TrustedBy() {
       <section className="trusted" id="trusted" ref={sectionRef}>
         <div className="container">
           <div className="trusted-head" ref={headRef}>
-            <div className="eyebrow anim-head">Partners & Affiliations</div>
+            <div className="eyebrow anim-head">Trusted partners</div>
             <h2 className="section-h anim-head" style={{ marginTop: 12 }}>
-              Trusted by leaders.<br />Backed by credentials.
+              Trusted by industry leaders.
             </h2>
             <p className="lede anim-head">
-              Proud partners of leading construction and industrial organizations, and affiliated with the top professional safety bodies in the US.
+              Supporting construction, infrastructure, public service, retail, industrial, and water / wastewater operations.
             </p>
           </div>
 
