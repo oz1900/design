@@ -16,7 +16,6 @@ const team = [
       "1.3M man-hours without OSHA recordable — BP refinery project",
       "ISO 45001 & ISO 14001 implementation",
       "Authorized OSHA Outreach Trainer",
-      "Senior HSSE Manager, Samsung E&A America Construction",
     ],
   },
   {
