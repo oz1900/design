@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useEffect, useState } from "react";
-import Image from "next/image";
 
 interface StatProps {
   end: number;
@@ -130,12 +129,14 @@ export default function Hero() {
           position: relative;
           aspect-ratio: 4/5;
           max-height: 640px;
+          overflow: hidden;
+          border-radius: 2px;
         }
-        .hero-media img {
+        .hero-media video {
           width: 100%; height: 100%;
           object-fit: cover;
           border-radius: 2px;
-          filter: saturate(0.92) contrast(1.02);
+          filter: saturate(0.88) contrast(1.05);
         }
         .hero-deco-top {
           position: absolute;
@@ -210,16 +211,15 @@ export default function Hero() {
             <div className="hero-media" ref={mediaRef}>
               <div className="hero-deco-top" />
               <div className="hero-deco-bottom" />
-              <Image
-                src="/hero.jpg"
-                alt="Active construction site with steel framework and workers in PPE"
-                width={600}
-                height={750}
-                style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: 2, filter: "saturate(0.92) contrast(1.02)" }}
-                priority
-                fetchPriority="high"
-                sizes="(max-width: 1000px) 100vw, 50vw"
-              />
+              <video
+                autoPlay
+                muted
+                loop
+                playsInline
+                poster="/hero.jpg"
+              >
+                <source src="/hero.mp4" type="video/mp4" />
+              </video>
               <div className="hero-tag" ref={tagRef}>
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>

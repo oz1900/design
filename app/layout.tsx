@@ -145,7 +145,7 @@ h1,h2,h3,h4{font-family:var(--font-display);color:var(--ink);margin:0;font-weigh
 .btn-secondary:hover{background:var(--ink);color:#fff}
 .btn-sm{padding:11px 18px;font-size:14px}
         ` }} />
-        <link rel="preload" as="image" href="/_next/image?url=%2Fhero.jpg&w=1200&q=75" fetchPriority="high" />
+        <link rel="preload" as="image" href="/hero.jpg" fetchPriority="high" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
