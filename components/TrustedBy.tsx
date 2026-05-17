@@ -113,18 +113,11 @@ const logos: LogoEntry[] = [
   },
   {
     key: "xylem",
-    type: "css",
-    render: () => (
-      <div className="logo-css" style={{
-        fontFamily: "var(--font-display)",
-        fontSize: 30,
-        fontWeight: 600,
-        color: "#111827",
-        letterSpacing: "-0.5px",
-        fontStyle: "italic",
-        lineHeight: 1,
-      }}>Xylem</div>
-    ),
+    type: "img",
+    src: "/logos/xylem.svg",
+    alt: "Xylem — Let's Solve Water",
+    width: 140,
+    height: 64,
   },
 ];
 
