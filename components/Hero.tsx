@@ -212,7 +212,7 @@ export default function Hero() {
           loop
           playsInline
           poster="/hero.jpg"
-          style={{ objectPosition: "center 30%" }}
+          style={{ objectPosition: "center center" }}
         >
           <source src="/hero.mp4" type="video/mp4" />
         </video>
