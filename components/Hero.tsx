@@ -75,6 +75,7 @@ export default function Hero() {
           width: 100%; height: 100%;
           object-fit: cover;
           z-index: 0;
+          filter: brightness(0.7) saturate(0.85);
         }
         .hero-overlay {
           position: absolute;
@@ -82,10 +83,10 @@ export default function Hero() {
           z-index: 1;
           background: linear-gradient(
             to bottom,
-            rgba(5,10,28,0.35) 0%,
-            rgba(5,10,28,0.15) 40%,
-            rgba(5,10,28,0.72) 75%,
-            rgba(5,10,28,0.92) 100%
+            rgba(5,10,28,0.6) 0%,
+            rgba(5,10,28,0.45) 40%,
+            rgba(5,10,28,0.82) 75%,
+            rgba(5,10,28,0.96) 100%
           );
         }
         .hero-content {
