@@ -1,4 +1,8 @@
-@import "tailwindcss";
+/* ── Minimal reset (Tailwind removed — no utilities used) ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+button { cursor: pointer; border: none; background: transparent; font: inherit; }
+ul, ol { list-style: none; }
+input, textarea, select { font: inherit; }
 
 /* ── Cal Sans ──────────────────────────────────────────────── */
 @font-face {
@@ -28,7 +32,6 @@
 }
 
 /* ── Base ──────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;
