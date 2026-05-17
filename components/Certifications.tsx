@@ -65,6 +65,8 @@ const certs: CertEntry[] = [
 
 export default function Certifications() {
   const sectionRef = useRef<HTMLElement>(null);
+  const headRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let ctx: { revert: () => void } | undefined;
@@ -72,9 +74,13 @@ export default function Certifications() {
       ([{ default: gsap }, { ScrollTrigger }]) => {
         gsap.registerPlugin(ScrollTrigger);
         ctx = gsap.context(() => {
-          gsap.from(sectionRef.current!.querySelectorAll(".cert-card"), {
-            opacity: 0, y: 20, duration: 0.5, stagger: 0.08, ease: "power3.out",
-            scrollTrigger: { trigger: sectionRef.current, start: "top 82%" },
+          gsap.from(headRef.current!.querySelectorAll(".anim-head"), {
+            opacity: 0, y: 24, duration: 0.6, stagger: 0.1, ease: "power3.out",
+            scrollTrigger: { trigger: headRef.current, start: "top 82%" },
+          });
+          ScrollTrigger.batch(gridRef.current!.querySelectorAll(".cert-card"), {
+            onEnter: (els) => gsap.from(els, { opacity: 0, y: 20, duration: 0.5, stagger: 0.06, ease: "power3.out" }),
+            start: "top 85%",
           });
         }, sectionRef);
       }
@@ -86,41 +92,41 @@ export default function Certifications() {
     <>
       <style>{`
         .certs {
-          padding: 80px 0;
+          padding: 112px 0;
           background: var(--canvas);
           border-top: 1px solid var(--hairline);
         }
-        .certs-inner {
-          display: flex;
-          align-items: center;
-          gap: 48px;
-          flex-wrap: wrap;
+        .certs-head {
+          text-align: center;
+          margin: 0 auto 64px;
+          max-width: 560px;
         }
-        .certs-label {
-          flex-shrink: 0;
+        .certs-head .eyebrow {
+          margin-bottom: 16px;
+          justify-content: center;
         }
-        .certs-label .eyebrow { margin-bottom: 8px; }
-        .certs-label p {
-          font-size: 14px;
+        .certs-head .lede {
+          margin: 14px auto 0;
           color: var(--muted);
-          max-width: 22ch;
-          line-height: 1.5;
-          margin: 0;
+          font-size: 16px;
+          max-width: 48ch;
+          line-height: 1.6;
         }
-        .certs-row {
-          display: flex;
-          gap: 16px;
-          flex-wrap: wrap;
-          flex: 1;
+        .cert-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
         }
         .cert-card {
-          flex: 1;
-          min-width: 140px;
-          background: var(--canvas-soft);
+          background: #fff;
           border: 1px solid var(--hairline);
-          padding: 24px 20px;
-          text-align: center;
-          transition: box-shadow .22s ease, transform .22s ease, border-color .22s ease;
+          height: 96px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 20px 32px;
+          transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+          overflow: hidden;
         }
         .cert-card:hover {
           transform: translateY(-3px);
@@ -128,70 +134,80 @@ export default function Certifications() {
           border-color: transparent;
         }
         .cert-card img {
+          max-width: 120px;
+          max-height: 48px;
+          width: auto;
+          height: auto;
+          object-fit: contain;
           filter: grayscale(1);
-          opacity: 0.6;
+          opacity: 0.55;
           transition: filter .22s ease, opacity .22s ease;
         }
         .cert-card:hover img {
           filter: grayscale(0);
           opacity: 1;
         }
-        @media (max-width: 860px) {
-          .certs-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
-          .certs-label p { max-width: none; }
-          .certs-row { width: 100%; }
+        .cert-css {
+          text-align: center;
+          opacity: 0.7;
+          transition: opacity .22s ease;
         }
-        @media (max-width: 540px) {
-          .cert-card { min-width: calc(50% - 8px); }
+        .cert-card:hover .cert-css { opacity: 1; }
+        .cert-abbr {
+          font-family: var(--font-display);
+          font-size: 22px;
+          font-weight: 800;
+          letter-spacing: 0.06em;
+          line-height: 1;
+          display: block;
+          margin-bottom: 5px;
         }
+        .cert-full {
+          font-family: var(--font-sans);
+          font-size: 8px;
+          font-weight: 600;
+          color: var(--muted);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          line-height: 1.4;
+          display: block;
+          max-width: 14ch;
+          margin: 0 auto;
+        }
+        @media (max-width: 860px) { .cert-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 540px) { .cert-grid { grid-template-columns: repeat(2, 1fr); } }
       `}</style>
 
       <section className="certs" ref={sectionRef}>
         <div className="container">
-          <div className="certs-inner">
-            <div className="certs-label">
-              <div className="eyebrow">Certifications</div>
-              <p>Professional affiliations &amp; industry credentials</p>
-            </div>
-            <div className="certs-row">
-              {certs.map((c) => (
-                <div key={c.key} className="cert-card">
-                  {c.type === "img" ? (
-                    <Image
-                      src={c.src}
-                      alt={c.alt}
-                      width={c.width}
-                      height={c.height}
-                      style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }}
-                      unoptimized
-                    />
-                  ) : (
-                    <div style={{ textAlign: "center" }}>
-                      <span style={{
-                        fontFamily: "var(--font-display)",
-                        fontSize: 24,
-                        fontWeight: 800,
-                        color: c.color,
-                        letterSpacing: "0.04em",
-                        lineHeight: 1,
-                        display: "block",
-                        marginBottom: 6,
-                      }}>{c.abbr}</span>
-                      <span style={{
-                        fontFamily: "var(--font-sans)",
-                        fontSize: 9,
-                        fontWeight: 600,
-                        color: "var(--muted)",
-                        letterSpacing: "0.1em",
-                        textTransform: "uppercase",
-                        lineHeight: 1.4,
-                        display: "block",
-                      }}>{c.full}</span>
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+          <div className="certs-head" ref={headRef}>
+            <div className="eyebrow anim-head">Certifications & Affiliations</div>
+            <h2 className="section-h anim-head" style={{ marginTop: 12 }}>
+              Backed by top industry credentials.
+            </h2>
+            <p className="lede anim-head">
+              Our team holds certifications from the leading safety and construction professional bodies in the United States.
+            </p>
+          </div>
+          <div className="cert-grid" ref={gridRef}>
+            {certs.map((c) => (
+              <div key={c.key} className="cert-card">
+                {c.type === "img" ? (
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    width={c.width}
+                    height={c.height}
+                    unoptimized
+                  />
+                ) : (
+                  <div className="cert-css">
+                    <span className="cert-abbr" style={{ color: c.color }}>{c.abbr}</span>
+                    <span className="cert-full">{c.full}</span>
+                  </div>
+                )}
+              </div>
+            ))}
           </div>
         </div>
       </section>
