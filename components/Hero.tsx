@@ -127,8 +127,8 @@ export default function Hero() {
         }
         .hero-media {
           position: relative;
-          aspect-ratio: 4/5;
-          max-height: 640px;
+          aspect-ratio: 16/10;
+          max-height: 560px;
           overflow: hidden;
           border-radius: 2px;
         }
@@ -136,7 +136,7 @@ export default function Hero() {
           width: 100%; height: 100%;
           object-fit: cover;
           border-radius: 2px;
-          filter: saturate(0.88) contrast(1.05);
+          filter: saturate(0.85) contrast(1.08);
         }
         .hero-deco-top {
           position: absolute;
