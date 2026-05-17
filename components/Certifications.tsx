@@ -1,31 +1,36 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 
 const certs = [
   {
     key: "nccer",
-    abbr: "NCCER",
-    full: "National Center for Construction Education & Research",
-    color: "#0047AB",
+    src: "/logos/nccer.svg",
+    alt: "NCCER — National Center for Construction Education & Research",
+    width: 160,
+    height: 48,
   },
   {
     key: "bcsp",
-    abbr: "BCSP",
-    full: "Board of Certified Safety Professionals",
-    color: "#003087",
+    src: "/logos/bcsp.png",
+    alt: "BCSP — Board of Certified Safety Professionals",
+    width: 160,
+    height: 44,
   },
   {
     key: "csp",
-    abbr: "CSP",
-    full: "Certified Safety Professional",
-    color: "#003087",
+    src: "/logos/csp.png",
+    alt: "CSP — Certified Safety Professional",
+    width: 120,
+    height: 54,
   },
   {
     key: "assp",
-    abbr: "ASSP",
-    full: "American Society of Safety Professionals",
-    color: "#C8102E",
+    src: "/logos/assp.png",
+    alt: "ASSP — American Society of Safety Professionals",
+    width: 160,
+    height: 56,
   },
 ];
 
@@ -93,23 +98,14 @@ export default function Certifications() {
           box-shadow: 0 8px 28px rgba(10,16,36,0.08);
           border-color: transparent;
         }
-        .cert-abbr {
-          font-family: var(--font-display);
-          font-size: 28px;
-          font-weight: 800;
-          letter-spacing: 0.04em;
-          line-height: 1;
-          display: block;
-          margin-bottom: 8px;
+        .cert-card img {
+          filter: grayscale(1);
+          opacity: 0.6;
+          transition: filter .22s ease, opacity .22s ease;
         }
-        .cert-full {
-          font-size: 10px;
-          font-weight: 600;
-          color: var(--muted);
-          letter-spacing: 0.1em;
-          text-transform: uppercase;
-          line-height: 1.4;
-          display: block;
+        .cert-card:hover img {
+          filter: grayscale(0);
+          opacity: 1;
         }
         @media (max-width: 860px) {
           .certs-inner { flex-direction: column; align-items: flex-start; gap: 32px; }
@@ -131,8 +127,14 @@ export default function Certifications() {
             <div className="certs-row">
               {certs.map((c) => (
                 <div key={c.key} className="cert-card">
-                  <span className="cert-abbr" style={{ color: c.color }}>{c.abbr}</span>
-                  <span className="cert-full">{c.full}</span>
+                  <Image
+                    src={c.src}
+                    alt={c.alt}
+                    width={c.width}
+                    height={c.height}
+                    style={{ maxWidth: "100%", height: "auto", objectFit: "contain" }}
+                    unoptimized
+                  />
                 </div>
               ))}
             </div>
