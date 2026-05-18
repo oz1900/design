@@ -48,8 +48,9 @@ export default function Hero() {
     import("gsap").then(({ default: gsap }) => {
       ctx = gsap.context(() => {
         const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-        tl.from(eyebrowRef.current, { opacity: 0, y: 16, duration: 0.6 }, 0.3)
-          .from(headingRef.current, { opacity: 0, y: 24, duration: 0.7 }, 0.5)
+        // No opacity on eyebrow/h1 — keeps them as LCP candidates immediately
+        tl.from(eyebrowRef.current, { y: 16, duration: 0.6 }, 0.3)
+          .from(headingRef.current, { y: 24, duration: 0.7 }, 0.5)
           .from(subRef.current,    { opacity: 0, y: 16, duration: 0.6 }, 0.75)
           .from(ctasRef.current,   { opacity: 0, y: 12, duration: 0.5 }, 0.9)
           .from(statsRef.current,  { opacity: 0, y: 10, duration: 0.5 }, 1.05);
@@ -224,6 +225,7 @@ export default function Hero() {
           muted
           loop
           playsInline
+          poster="/hero-poster.jpg"
           style={{ objectPosition: "center center" }}
         >
           <source src="/hero.mp4" type="video/mp4" />
