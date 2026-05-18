@@ -225,7 +225,7 @@ export default function Hero() {
           muted
           loop
           playsInline
-          poster="/hero-poster.jpg"
+          poster="/hero-poster.webp"
           style={{ objectPosition: "center center" }}
         >
           <source src="/hero.mp4" type="video/mp4" />
